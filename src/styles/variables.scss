@@ -1,0 +1,17 @@
+
+:root {
+    --app-background: hsl(220, 31%, 12%);
+    --app-background-gradient: linear-gradient(
+        45deg, hsl(300, 100%, 25%), 55%, hsl(240, 100%, 50%)
+    );
+
+    --primary-text-color: hsl(0, 0%, 80%);
+    --white-color: hsl(0 0% 100%);
+    --black-color: hsl(0 0% 0%);
+
+    --fantacy-font: 'Merienda', cursive;
+    --primary-font: 'Poppins', sans-serif;
+    --secondary-font: 'Lora', serif;
+
+    --app-max-width: 80rem;
+}

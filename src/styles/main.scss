@@ -1,4 +1,7 @@
 
+@use "variables" as *;
+@use "home-page/home-page.scss";
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +9,19 @@
 }
 
 body {
-  flex: grid;
+  display: flex;
+  justify-content: center;
   height: 100vh;
-  place-items: center;
+  font-family: var(--primary-font);
+  color: var(--primary-text-color);
+  
+  background: var(--app-background);
+  background-image: var(--app-background-gradient);
+  background-blend-mode: multiply;
+  
+  @media (min-width: 400px) {
+    & {
+      padding: 0 2.5rem;
+    }
+  }
 }
