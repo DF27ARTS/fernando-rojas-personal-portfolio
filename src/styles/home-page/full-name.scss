@@ -6,7 +6,7 @@
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
-    font-family: var(--fantacy-font);
+    font-family: var(--primary-font);
     font-weight: bold;
     transform: perspective(1000px);
     transform-style: preserve-3d;
@@ -21,18 +21,13 @@
     }
 
     @media (min-width: $mobile-width) {
-        & {
-            font-size: 5.5rem;
-            gap: 2rem;
-        }
+        font-size: 5.5rem;
+        gap: 2rem;
     }
     
     @media (min-width: $mobile-width) and (max-width: $tablet-width) {
-        & {
-            font-size: 5vw;
-            gap: .75rem;
-            color: lime;
-        }
+        font-size: 3rem;
+        gap: .75rem;
     }
     
     .single-word {
