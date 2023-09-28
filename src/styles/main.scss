@@ -19,7 +19,7 @@ body {
   background-image: var(--app-background-gradient);
   background-blend-mode: multiply;
   
-  @media (min-width: $mobile) {
+  @media (min-width: $mobile-width) {
     & {
       padding: 0 2.5rem;
     }

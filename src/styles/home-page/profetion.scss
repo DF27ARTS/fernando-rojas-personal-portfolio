@@ -1,0 +1,60 @@
+
+@use "../variables.scss" as *;
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+.profetion {
+    --_animation-duration: 3s;
+    --_text-width: 15rem;
+
+    position: relative;
+    font-size: 1.4rem;
+    height: 2rem;
+    width: 0;
+    overflow: hidden;
+
+    animation: typing var(--_animation-duration) steps(18) 2000ms forwards;
+    
+    @media (min-width: $mobile-width) {
+        --_text-width: 21.5rem;
+        height: 2.4rem;
+        font-size: 2rem;
+    }
+
+    &::before {
+        content: attr(area-text);
+        position: absolute;
+        inset: 0 auto 0 0;
+        margin: auto;
+        width: max-content;
+        font-family: 'Source Code Pro', monospace;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0 0 0 auto;
+        margin: auto;
+        height: 100%;
+        width: .1rem;
+        opacity: 0;
+        background: var(--primary-text-color);
+
+        @media (min-width: $mobile-width) {
+            width: .2rem;
+            background: red;
+        }
+
+        animation: typing-pointer calc(var(--_animation-duration) + 100ms) linear forwards;
+
+        @keyframes typing-pointer {
+            0% { opacity: 1;}
+            100% { opacity: 1;}
+        }
+    }
+
+    @keyframes typing{
+        100% {
+            width: var(--_text-width);
+        }
+    }
+}

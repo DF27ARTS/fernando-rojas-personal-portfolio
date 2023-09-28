@@ -1,0 +1,38 @@
+
+@use "../variables" as *;
+
+.profile-picture {
+    height: 20rem;
+    aspect-ratio: .75 / 1;
+    border-bottom-right-radius: 20%;
+    border-bottom-left-radius: 10%;
+    overflow: hidden;
+    position: relative;
+
+    @media (min-width: $mobile-width) {
+        height: 35rem;
+    }
+
+    .gradient-background {
+        position: absolute;
+        bottom: 0;
+        background: linear-gradient(45deg, blue, purple);
+        height: 18rem;
+        aspect-ratio: .83 / 1;
+        border-top-left-radius: 20%;
+        border-top-right-radius: 100%;
+
+        @media (min-width: $mobile-width) {
+            height: 27rem;
+        }
+    }
+
+    .picture {
+        position: absolute;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(.7) contrast(1.2);
+    }
+}

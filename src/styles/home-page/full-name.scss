@@ -6,9 +6,13 @@
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
-    font-family: var(--secondary-font);
+    font-family: var(--fantacy-font);
+    font-weight: bold;
     transform: perspective(1000px);
     transform-style: preserve-3d;
+
+    font-size: 3rem;
+    gap: 1.5rem;
 
     @for $i from 0 to 8 {
         & .single-letter:nth-child(#{$i + 1}) {
@@ -16,17 +20,18 @@
         }
     }
 
-    @media (min-width: $mobile) {
+    @media (min-width: $mobile-width) {
         & {
-            font-size: 5rem;
-            gap: 1.5rem;
+            font-size: 5.5rem;
+            gap: 2rem;
         }
     }
     
-    @media (min-width: $mobile) and (max-width: $tablet) {
+    @media (min-width: $mobile-width) and (max-width: $tablet-width) {
         & {
-            font-size: 3.5vw;
+            font-size: 5vw;
             gap: .75rem;
+            color: lime;
         }
     }
     
@@ -39,6 +44,8 @@
         transform-style: preserve-3d;
         line-height: .9;
         opacity: 0;
+        -webkit-background-clip: text;
+        background-clip: text;
         animation: single-letter 1000ms linear calc(var(--letter-delay) + var(--word-delay)) forwards;
 
         @keyframes single-letter {
