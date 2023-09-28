@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Merienda&family=Poppins:wght@300&display=swap');
+
 :root {
     --app-background: hsl(220, 31%, 12%);
     --app-background-gradient: linear-gradient(
@@ -15,3 +17,6 @@
 
     --app-max-width: 80rem;
 }
+
+$mobile: 450px;
+$tablet: 1020px;

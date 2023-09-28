@@ -11,7 +11,7 @@
 body {
   display: flex;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   font-family: var(--primary-font);
   color: var(--primary-text-color);
   
@@ -19,7 +19,7 @@ body {
   background-image: var(--app-background-gradient);
   background-blend-mode: multiply;
   
-  @media (min-width: 400px) {
+  @media (min-width: $mobile) {
     & {
       padding: 0 2.5rem;
     }
