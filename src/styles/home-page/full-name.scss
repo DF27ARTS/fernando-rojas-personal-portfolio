@@ -2,17 +2,27 @@
 @use "../variables.scss" as *;
 
 .profile-name-container {
+    position: relative;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
     font-family: var(--primary-font);
     font-weight: bold;
-    transform: perspective(1000px);
-    transform-style: preserve-3d;
+    perspective: 1000px;
+    font-size: 3.5rem;
 
-    font-size: 3rem;
-    gap: 1.5rem;
+    & * {
+        transform-style: preserve-3d;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, blue, purple);
+    }
+
 
     @for $i from 0 to 8 {
         & .single-letter:nth-child(#{$i + 1}) {
@@ -21,7 +31,7 @@
     }
 
     @media (min-width: $mobile-width) {
-        font-size: 5.5rem;
+        font-size: 7rem;
         gap: 2rem;
     }
     
@@ -29,28 +39,27 @@
         font-size: 3rem;
         gap: .75rem;
     }
-    
+
     .single-word {
         display: flex;
-        transform-style: preserve-3d;
-    }
+        gap: .5rem;
+        --item-amount: 10;
 
-    .single-letter {
-        transform-style: preserve-3d;
-        line-height: .9;
-        opacity: 0;
-        -webkit-background-clip: text;
-        background-clip: text;
-        animation: single-letter 1000ms linear calc(var(--letter-delay) + var(--word-delay)) forwards;
+        .single-letter {
+            line-height: .9;
+            opacity: 0;
+            transform-origin: center;
+            animation: single-letter 500ms linear calc(var(--letter-delay) + var(--word-delay)) forwards;
 
-        @keyframes single-letter {
-            0% {
-                opacity: 0;
-                transform: rotateY(-70deg) translateZ(15rem) rotate(-90deg);
-            }
-            100% {
-                opacity: 1;
-                transform: rotateY(0) translateZ(0) rotate(0);
+            @keyframes single-letter {
+                0% {
+                    opacity: 0;
+                    transform: rotateY(5deg) translateZ(70rem);                
+                }
+                100% {
+                    opacity: 1;
+                    transform: rotateY(0) translateZ(0);               
+                }
             }
         }
     }

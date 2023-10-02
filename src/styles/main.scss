@@ -14,14 +14,34 @@ body {
   min-height: 100vh;
   font-family: var(--primary-font);
   color: var(--primary-text-color);
+  isolation: isolate;
   
-  background: var(--app-background);
-  background-image: var(--app-background-gradient);
-  background-blend-mode: multiply;
+  &::before {
+    content: "";
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+
+    background: var(--app-background);
+    background-image: var(--app-background-gradient);
+    background-blend-mode: multiply;
+    background-position: fixed;
+    z-index: -1;
+  }
   
   @media (min-width: $mobile-width) {
     & {
       padding: 0 2.5rem;
     }
   }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background: var(--app-background);
+    opacity: .5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--app-background);
+   }
 }
