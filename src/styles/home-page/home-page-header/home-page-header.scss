@@ -1,0 +1,61 @@
+
+@use "../../variables" as *;
+
+@use "full-name";
+@use "profile-picture";
+@use "profetion";
+
+.home-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20rem fit-content;
+    place-content: center;
+    gap: 3rem;
+    height: fit-content;
+    padding: 2.5rem 0;
+
+
+    @media (min-width: $mobile-width) {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 30rem;
+        gap: 0;
+    }
+
+    @media (min-width: $mobile-width) and (max-width: $tablet-width) {
+        gap: 1rem;
+    }
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // border: 1px solid red;
+
+        &:first-child {
+            @media (min-width: $mobile-width) {
+                align-items: flex-end;
+            }
+        }
+
+        @media (min-width: $mobile-width) {
+            height: 30rem;
+        }
+
+        .profile-title {
+            height: 100%;
+            display: flex;
+            gap: 2rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            @media (min-width: $mobile-width) {
+                gap: 4rem;
+            }   
+
+            @media (min-width: $mobile-width) and (max-width: $tablet-width) {
+                gap: 3rem;
+            }
+        }
+    }
+}

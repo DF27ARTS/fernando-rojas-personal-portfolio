@@ -2,9 +2,6 @@ const FullName = () => {
     const NAME = "FERNANDO ROJAS"
     return (
         <div className="profile-name-container">
-            {/* <div className="full-name" area-name={`${NAME}`} >
-                {NAME}
-            </div> */}
             {NAME.split(" ").map((word, index) => {
                 const wordDelay = index !== 0 ? NAME.split(" ")[0].length * 100 : 0;
                 return (
@@ -16,10 +13,6 @@ const FullName = () => {
                             return (
                                 <div key={`letter-${index}`} className="single-letter">
                                     {letter}
-                                    
-                                    {Array(20).fill().map((_, index) => {
-                                        return <div key={`${letter}-${index}`} letter={letter} ></div>
-                                    })}
                                 </div>
                             )
                         })}

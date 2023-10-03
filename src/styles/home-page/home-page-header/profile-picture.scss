@@ -1,10 +1,10 @@
 
-@use "../variables" as *;
+@use "../../variables" as *;
 
 .profile-picture {
     height: 20rem;
     aspect-ratio: .75 / 1;
-    border-bottom-right-radius: 30%;
+    border-bottom-right-radius: 20%;
     border-bottom-left-radius: 10%;
     overflow: hidden;
     position: relative;
@@ -18,7 +18,7 @@
         bottom: 0;
         background: linear-gradient(45deg, blue, purple);
         height: 18rem;
-        aspect-ratio: .83 / 1;
+        aspect-ratio: .835 / 1;
         border-top-left-radius: 20%;
         border-top-right-radius: 100%;
 

@@ -1,11 +1,11 @@
-import FullName from "@/components/FullName";
-import Profetion from "@/components/Profetion";
-import ProfilePicture from "@/components/ProfilePicture";
+import FullName from "@/components/home-page/home-page-header/FullName";
+import Profetion from "@/components/home-page/home-page-header/Profetion";
+import ProfilePicture from "@/components/home-page/home-page-header/ProfilePicture";
 
 const HomePage = () => {
     
     return (
-        <div className="home-page" >
+        <>
             <section className="home-header">
                 <div> 
                     <ProfilePicture />
@@ -17,7 +17,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     )
 }
 

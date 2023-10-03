@@ -1,5 +1,5 @@
 
-@use "../variables.scss" as *;
+@use "../../variables" as *;
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 .profetion-text-container {
@@ -12,6 +12,9 @@
 
 .profetion {
 
+    --_word-background: radial-gradient( 
+        circle farthest-corner at 12.3% 19.3%,  hsl(240, 100%, 50%) 0%, hsl(300, 100%, 25%) 100.2% )
+    ;
     --_name-animation-delay: 3000ms;
     --_typing-animation-delay: calc(
         var(--_name-animation-delay) + var(--_word-delay, 0ms)
@@ -87,7 +90,7 @@
         width: max-content;
         font-family: var(--monospace-font);
 
-        background: linear-gradient(90deg, blue, purple);
+        background: var(--_word-background);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;

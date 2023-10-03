@@ -1,5 +1,5 @@
 
-@use "../variables.scss" as *;
+@use "../../variables" as *;
 
 .profile-name-container {
     position: relative;
@@ -20,7 +20,6 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(45deg, blue, purple);
     }
 
 
@@ -43,18 +42,22 @@
     .single-word {
         display: flex;
         gap: .5rem;
-        --item-amount: 10;
 
         .single-letter {
             line-height: .9;
             opacity: 0;
             transform-origin: center;
-            animation: single-letter 500ms linear calc(var(--letter-delay) + var(--word-delay)) forwards;
+            animation: single-letter 700ms linear calc(var(--letter-delay) + var(--word-delay)) forwards;
+            text-shadow: 
+              0 0 .5rem hsla(240, 100%, 50%, 0.4),
+              0 0 1rem hsla(300, 100%, 25%, 0.4)
+              ;
 
             @keyframes single-letter {
                 0% {
                     opacity: 0;
                     transform: rotateY(5deg) translateZ(70rem);                
+
                 }
                 100% {
                     opacity: 1;

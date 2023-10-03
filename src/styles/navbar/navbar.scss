@@ -1,0 +1,27 @@
+
+@use "../variables" as *;
+
+.navbar {
+    height: 5rem;
+    width: min(100%, var(--app-max-width));
+    background: var(--app-background);
+    mix-blend-mode: lighten;
+    display: flex;
+
+    & > .navbar-links {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        margin-left: auto;
+
+        .navbar-link {
+            text-decoration: none;
+            color: inherit;
+            border-inline: 1px solid lime;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            padding: 0 2rem;
+        }
+    }
+}

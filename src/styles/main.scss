@@ -1,6 +1,8 @@
 
 @use "variables" as *;
-@use "home-page/home-page.scss";
+
+@use "home-page/home-page";
+@use "navbar/navbar";
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -10,7 +12,8 @@
 
 body {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   font-family: var(--primary-font);
   color: var(--primary-text-color);
