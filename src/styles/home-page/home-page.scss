@@ -1,9 +1,0 @@
-
-@use "../variables" as *;
-@use "home-page-header/home-page-header";
-
-.home-page {
-    border-inline: 2px solid #ccc;
-    min-height: calc(100vh - 5rem);
-    width: min(100%, var(--app-max-width));
-}

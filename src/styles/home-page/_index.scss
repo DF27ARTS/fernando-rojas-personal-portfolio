@@ -1,0 +1,9 @@
+
+@use "../variables" as *;
+@use "home-page-header";
+
+.home-page {
+    border-inline: 2px solid #ccc;
+    min-height: calc(100vh - var(--navbar-height));
+    width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
+}

@@ -1,9 +1,9 @@
 
 @use "../../variables" as *;
 
-@use "full-name";
-@use "profile-picture";
-@use "profetion";
+@use "_full-name";
+@use "_profile-picture";
+@use "_profetion";
 
 .home-header {
     display: grid;

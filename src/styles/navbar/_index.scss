@@ -1,0 +1,149 @@
+
+@use "../variables" as *;
+
+.navbar {
+    --_nav-spacer: var(--spacer-2);
+    --_nav_timming-animation: 500ms;
+    --_nav-background: var(--app-background);
+
+    height: var(--navbar-height);
+    width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
+    background: var(--_nav-background);
+    display: flex;
+    padding: 0 var(--_nav-spacer);
+
+    .navbar-links {
+        display: flex;
+        gap: calc(var(--_nav-spacer) * 2); 
+        list-style: none;
+        align-items: center;
+        margin-left: auto;
+
+        transform: perspective(1000px);
+        transform-style: preserve-3d;
+        & * { transform-style: preserve-3d; }
+        padding: 0 2rem;
+
+        .navbar-link {
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+            padding: 0 var(--_nav-spacer);
+            
+            // outline: 1px solid lime;
+
+            @media (width <= $mobile-width) {
+                padding: 0;
+
+                & .btn-scene {
+                    display: none;
+                }
+
+                &::before {
+                    content: attr(nav-link);
+                    position: relative;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    background: var(--_nav-background);
+
+                    display: flex;
+                    align-items: center;
+                    padding: 0 var(--_nav-spacer);
+                }
+            }
+
+            @media (width >= $mobile-width) {
+                position: relative;
+
+                &::before {
+                    content: attr(nav-link);
+                    position: relative;
+                    top: 0;
+                    color: transparent;
+                }
+            }
+        }
+
+        @media (width >= $mobile-width) {
+
+            .navbar-link:hover .btn-scene {
+                transform: 
+                    translateZ(calc(var(--navbar-height) / -2))
+                    rotateX(90deg);
+
+                .front { 
+                    --_before-element-translate: var(--navbar-height);
+                    --_after-opacity: 0.5;
+                }
+
+                .bottom { 
+                    --_before-element-translate: 0;
+                    --_after-opacity: 0;
+                }
+            }
+    
+            .btn-scene {
+                position: absolute;
+                inset: 0;
+                transition: transform ease var(--_nav_timming-animation);
+                transform: translateZ(calc(var(--navbar-height) / -2));
+    
+                .front { 
+                    --_x-rotation: 0deg; 
+                    --_before-element-translate: 0rem;
+                    --_after-opacity: 0;
+                }
+
+                .bottom { 
+                    --_x-rotation: 270deg; 
+                    --_before-element-translate: calc(var(--navbar-height) * -1);
+                    --_after-opacity: 0.5;
+                }
+    
+                & > :where(.front, .bottom) {
+                    position: absolute;
+                    inset: 0;
+                    overflow: hidden;
+                    background: var(--_nav-background);
+                    box-shadow: 0 0 1rem #0003 inset;
+                    isolation: isolate;
+
+                    transform: 
+                        rotateX(var(--_x-rotation))
+                        translateZ(calc(var(--navbar-height) / 2));
+    
+                    &::before {
+                        content: attr(nav-link);
+                        position: absolute;
+                        inset: 0;
+
+                        display: grid;
+                        place-content: center;
+
+                        transition: transform ease calc(var(--_nav_timming-animation) * 2);
+                        transform: translateY(var(--_before-element-translate))
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        inset: 0;
+
+                        background: var(--black-color);
+                        opacity: var(--_after-opacity);
+                        transform: translateY(var(--_after-element-translate));
+
+                        transition: 
+                            opacity ease calc(var(--_nav_timming-animation) * 2),
+                            transform ease calc(var(--_nav_timming-animation) * 2);
+                    }
+                }
+
+                // & > .bottom {
+                //     background-image: url("../../assets/profile-picture.png") !important;
+                // }
+            }
+        }
+    }
+}

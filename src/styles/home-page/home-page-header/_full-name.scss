@@ -4,7 +4,7 @@
 .profile-name-container {
     position: relative;
     display: flex;
-    gap: 1rem;
+    gap: var(--spacer-2);
     flex-wrap: wrap;
     justify-content: center;
     font-family: var(--primary-font);
@@ -31,17 +31,17 @@
 
     @media (min-width: $mobile-width) {
         font-size: 7rem;
-        gap: 2rem;
+        gap: var(--spacer-4);
     }
     
     @media (min-width: $mobile-width) and (max-width: $tablet-width) {
         font-size: 3rem;
-        gap: .75rem;
+        gap: var(--spacer-1);
     }
 
     .single-word {
         display: flex;
-        gap: .5rem;
+        gap: var(--spacer-1);
 
         .single-letter {
             line-height: .9;
@@ -49,9 +49,8 @@
             transform-origin: center;
             animation: single-letter 700ms linear calc(var(--letter-delay) + var(--word-delay)) forwards;
             text-shadow: 
-              0 0 .5rem hsla(240, 100%, 50%, 0.4),
-              0 0 1rem hsla(300, 100%, 25%, 0.4)
-              ;
+               .5rem .5rem 5rem hsla(240, 50%, 25%, 0.4),
+               1rem 1rem 5rem hsla(300, 100%, 25%, 0.4);
 
             @keyframes single-letter {
                 0% {
