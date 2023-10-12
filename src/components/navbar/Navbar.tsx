@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 const Navbar = () => {
 
-    const navbarLinksRef = useRef();
+    const navbarLinksRef = useRef<HTMLUListElement | null>(null);
 
     const selectPageBtn = (attribute: string) => {
         const currentBtn = navbarLinksRef.current.querySelector(".selected")
@@ -18,33 +18,29 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <ul ref={navbarLinksRef} className="navbar-links">
-                <Link onClick={() => selectPageBtn("home")} btn-attribute="home" nav-link="HOME PAGE" href="/home" className="navbar-link selected">
-                    <div className="btn-scene">
-                        <div aria-hidden="true" nav-link="HOME PAGE" className="front"></div>
-                        <div aria-hidden="true" nav-link="HOME PAGE" className="bottom"></div>
-                    </div>
-                </Link>
+                <li className="navbar-link selected" btn-attribute="home">
+                    <Link onClick={() => selectPageBtn("home")} link-attribute="home" href="/home">
+                        HOME PAGE
+                    </Link>
+                </li>
 
-                <Link onClick={() => selectPageBtn("projects")} btn-attribute="projects" nav-link="PROJECTS" href="/projects" className="navbar-link">
-                    <div className="btn-scene">
-                        <div aria-hidden="true" nav-link="PROJECTS" className="front"></div>
-                        <div aria-hidden="true" nav-link="PROJECTS" className="bottom"></div>
-                    </div>
-                </Link>
+                <li className="navbar-link" btn-attribute="projects">
+                    <Link onClick={() => selectPageBtn("projects")} link-attribute="projects" href="/projects">
+                        PROJECTS
+                    </Link>
+                </li>
 
-                <Link onClick={() => selectPageBtn("studies")} btn-attribute="studies" nav-link="STUDIES" href="/studies" className="navbar-link">
-                    <div className="btn-scene">
-                        <div aria-hidden="true" nav-link="STUDIES" className="front"></div>
-                        <div aria-hidden="true" nav-link="STUDIES" className="bottom"></div>
-                    </div>
-                </Link>
+                <li className="navbar-link" btn-attribute="studies">
+                    <Link onClick={() => selectPageBtn("studies")} link-attribute="studies" href="/studies">
+                        STUDIES
+                    </Link>
+                </li>
                 
-                <Link onClick={() => selectPageBtn("contact")} btn-attribute="contact" nav-link="CONTACT" href="/contact" className="navbar-link">
-                    <div className="btn-scene">
-                        <div aria-hidden="true" nav-link="CONTACT" className="front"></div>
-                        <div aria-hidden="true" nav-link="CONTACT" className="bottom"></div>
-                    </div>
-                </Link>
+                <li className="navbar-link" btn-attribute="contact">
+                    <Link onClick={() => selectPageBtn("contact")} link-attribute="contact" href="/contact">
+                        CONTACT
+                    </Link>
+                </li>
             </ul>
         </nav>
     )
