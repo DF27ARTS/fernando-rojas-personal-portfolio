@@ -11,10 +11,8 @@
 
 
     height: var(--navbar-height);
-    background: var(--_nav-background);
     display: flex;
     width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
-
 
     @media ($mobile-width >= width) {
         width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
@@ -32,7 +30,6 @@
             text-decoration: none;
             color: inherit;
             height: calc(var(--navbar-height) / 1.3);
-            background: var(--_nav-background);
             isolation: isolate;
             border-radius: .175rem;
             overflow: hidden;
@@ -104,5 +101,21 @@
                 padding: 0 var(--_nav-spacer);
             }
         }
+    }
+}
+
+.get-up-btn-section {
+    position: fixed;
+    bottom: 0;
+    width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
+    outline: 1px solid lime;
+    z-index: -1;
+
+    display: flex;
+    justify-content: flex-end;
+
+
+    .get-up-btn {
+        z-index: 2000;
     }
 }
