@@ -5,5 +5,9 @@
 .home-page {
     border-inline: 2px solid #ccc;
     min-height: calc(100vh - var(--navbar-height));
-    width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
+    width: calc(100% - (var(--spacer-5) / 2));
+    
+    @media (width >= $mobile-width) {
+        width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
+    }
 }

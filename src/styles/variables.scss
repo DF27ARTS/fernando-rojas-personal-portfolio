@@ -1,6 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Merienda&family=Poppins:wght@300&display=swap');
 
+$mobile-width: 800px;
+$tablet-width: 1130px;
+
 :root {
     --app-background: hsl(220, 31%, 12%);
     --app-background-gradient: linear-gradient(
@@ -16,8 +19,11 @@
     --secondary-font: 'Lora', serif;
     --monospace-font: 'Source Code Pro', monospace;
 
-    --navbar-height: 4rem;
     --app-max-width: 75rem;
+    --navbar-height: 2rem;
+    @media (width >= $mobile-width) {
+        --navbar-height: 5rem;
+    }
 
     --spacer-1: .5rem;
     --spacer-2: 1rem;
@@ -28,6 +34,3 @@
     --cursor-y: 50%;
     --cursor-x: 50%;
 }
-
-$mobile-width: 800px;
-$tablet-width: 1130px;

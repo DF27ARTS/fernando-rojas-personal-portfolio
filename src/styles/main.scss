@@ -19,6 +19,10 @@ body {
   color: var(--primary-text-color);
   isolation: isolate;
   overflow-y: scroll;
+
+  @media (width <= $mobile-width) {
+    overflow-x: hidden;
+  }
   
   &::before {
     content: "";
