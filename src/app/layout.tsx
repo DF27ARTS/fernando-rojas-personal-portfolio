@@ -1,3 +1,4 @@
+import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/navbar/Navbar';
 import '@/styles/main.scss';
 import type { Metadata } from 'next'
@@ -23,6 +24,7 @@ export default function RootLayout({
         <div className="home-page">
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   )

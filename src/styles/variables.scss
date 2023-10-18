@@ -19,11 +19,13 @@ $tablet-width: 1130px;
     --secondary-font: 'Lora', serif;
     --monospace-font: 'Source Code Pro', monospace;
 
-    --app-max-width: 75rem;
-    --navbar-height: 2rem;
-    @media (width >= $mobile-width) {
-        --navbar-height: 5rem;
+    @media (width <= $mobile-width) {
+        --navbar-height: 2rem;
+        --footer-height: 5rem;
     }
+    --app-max-width: 75rem;
+    --navbar-height: 5rem;
+    --footer-height: 7rem;
 
     --spacer-1: .5rem;
     --spacer-2: 1rem;

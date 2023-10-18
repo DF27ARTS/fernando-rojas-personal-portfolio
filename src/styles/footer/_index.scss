@@ -1,0 +1,128 @@
+
+@use "../variables" as *;
+
+.footer { 
+    // @media (width <= $mobile-width) {
+    //     --footer-height: calc(var(--navbar-height) * 2);
+    // }
+    // --footer-height: var(--navbar-height);
+    --_footer-spacer: var(--spacer-2);
+    --_footer-transform-duration: 500ms;
+
+    --_twitter-background: hsl(203, 83%, 51%);
+    --_github-background: hsl(210, 19%, 73%);
+    --_linkedIn-backgrond: hsl(201, 92%, 38%);
+    --_email-background: hsl(45, 100%, 48%);
+
+
+    height: var(--footer-height);
+    width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
+    // outline: 1px solid lime;
+
+    display: flex;
+    align-items: center;
+
+    .footer-contact-links {
+        margin-left: auto;
+        height: var(--footer-height);
+        display: flex;
+        align-items: center;
+        gap: calc(var(--_footer-spacer) * 1.5);
+        list-style: none;
+
+        [icon-attribute] {
+            --_icon-rotation-degree: 55deg;
+            --_icon-height: calc(var(--footer-height) / 2.2);
+
+            &[icon-attribute=github] { --_icon-background: var(--_github-background); }
+            &[icon-attribute=linkedIn] { --_icon-background: var(--_linkedIn-backgrond); }
+            &[icon-attribute=email] { --_icon-background: var(--_email-background); }
+            &[icon-attribute=twitter] { --_icon-background: var(--_twitter-background); }
+
+            height: var(--_icon-height);
+            aspect-ratio: 1 / 1;
+
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: .5rem;
+
+            @media (width >= $tablet-width) {
+                transform: perspective(500px);
+                transform-style: preserve-3d;
+                * { transform-style: preserve-3d; }
+            }
+
+            .icon-container {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                border-radius: inherit;
+
+                display: grid;
+                place-content: center;
+                background: var(--app-background);
+                transition: transform var(--_footer-transform-duration) ease;
+
+                @media (width >= $tablet-width) {
+
+                    &::before, &::after {
+                        content: "";
+                        position: absolute;
+                        inset: 1px;
+                        background: var(--_icon-background);
+                        border-radius: inherit;
+
+                        transition: transform calc(var(--_footer-transform-duration) * 1.5) ease;
+                        transform: translateZ(-1px);
+                        z-index: -1;
+                    }
+
+                    &::before { opacity: .3 }
+                    &::after { opacity: .15 }
+                }
+            }
+
+            svg {
+                --_svg-size: calc(var(--_icon-height) / 1.5);
+
+                fill: var(--_icon-background);
+                height: var(--_svg-size);
+                width: var(--_svg-size);
+
+                @media (width >= $tablet-width) {            
+                    transition: transform var(--_footer-transform-duration) ease;
+                    transform:
+                        translateZ(0)
+                        rotateX(0);
+                }
+            }
+
+            @media (width >= $tablet-width) {
+                &:is(:hover, :focus) {
+                    .icon-container {
+                        position: relative;
+                        transform: rotateX(var(--_icon-rotation-degree));
+
+                        &::before { 
+                            transform: 
+                                rotate(-45deg)
+                                translateZ(-1rem); 
+                        }
+                        &::after { 
+                            transform: 
+                                rotate(45deg)
+                                translateZ(-2rem); 
+                        }
+                    }
+
+                    svg {
+                        transform:
+                            translateZ(2rem)
+                            rotateX(calc(var(--_icon-rotation-degree) * -1));
+                    }
+                }
+            }
+        }
+    }
+}
