@@ -1,0 +1,16 @@
+
+@use "../../variables" as *;
+
+.grid-content {
+    --_grid-content-unit: calc(var(--_page-content-width) / 10);
+    flex: none;
+    outline: 1px solid yellow;
+
+    @media (width >= $mobile-width) {
+        height: 100%;
+        width: calc(var(--_grid-content-unit) * 7);
+        margin-inline: auto; 
+
+        transform: rotateY(-45deg);
+    }
+}

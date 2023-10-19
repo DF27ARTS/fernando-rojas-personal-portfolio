@@ -21,7 +21,7 @@ const HomePage = () => {
 
 
             <section className="table-of-content">
-                <h2 className="table-of-content__title">TABLE OF CONTENT</h2>
+                <h2 className="table-of-content__title">THE NEXT IS THE TABLE OF CONTENTS</h2>
                 <GridContent />
             </section>
         </>

@@ -1,6 +1,6 @@
 const GridContent = () => {
   return (
-    <div>GridContent</div>
+    <div className="grid-content" >GridContent</div>
   )
 }
 

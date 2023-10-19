@@ -1,0 +1,30 @@
+
+@use "../../variables" as *;
+@use "grid-content";
+
+.table-of-content {
+    outline: 2px solid lime;
+    padding: calc(var(--spacer-5) * 4) 0 ;
+
+    @media (width >= $mobile-width) {
+
+        display: flex;
+        align-items: center;
+     
+        perspective: 500px;
+        & * { transform-style: preserve-3d }
+    }
+
+
+    &__title {
+        outline: 1px solid blue;
+
+        @media (width >= $tablet-width) {
+            font-size: 4.5rem;
+            width: min-content;
+
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
