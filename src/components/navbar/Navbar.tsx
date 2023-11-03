@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 
+
 const Navbar = () => {
     const navbarLinksRef = useRef<HTMLUListElement | null>(null);
     const navbarRef = useRef<HTMLElement | null>(null);
@@ -20,7 +21,7 @@ const Navbar = () => {
             if (toggleMenu) {
                 slideMenuOut(navbar);
             }
-        }
+        } 
     }
 
     const toggleMenuBtn = () => {
