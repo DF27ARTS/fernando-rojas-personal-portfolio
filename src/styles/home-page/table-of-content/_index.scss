@@ -20,7 +20,6 @@
     }
 
     &__grid-content {
-        --_grid-content-unit: calc(var(--_page-content-width) / 10);
 
         position: absolute;
         inset: 0 0 0 auto;
@@ -58,7 +57,7 @@
             padding: 1.5rem;
             gap: 1rem;
 
-            width: calc(var(--_grid-content-unit) * 8);
+            width: 55rem;
             height: 35rem;
             transform-origin: 100% 50%;
             transform: rotateY(-20deg);
