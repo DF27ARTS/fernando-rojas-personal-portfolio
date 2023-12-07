@@ -7,6 +7,7 @@ import frontEndMentor from "@/assets/frontend-mentor-img.jpeg";
 import codepen from "@/assets/codepen.png";
 import emailMe from "@/assets/email-me-img.jpg";
 import studies from "@/assets/studies-img.jpg";
+import { lato } from "@/fonts/fonts";
 
 const HomePage = () => {
   return (
@@ -24,7 +25,7 @@ const HomePage = () => {
       </section>
 
       <section className="table-of-content">
-        <h2 className="table-of-content__title">
+        <h2 className={`table-of-content__title ${lato.className}`}>
           SOME <span className="word-one">OF</span>{" "}
           <span className="word-two">MY</span> WORK
         </h2>

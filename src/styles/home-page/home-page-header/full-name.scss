@@ -10,8 +10,6 @@
     gap: var(--spacer-2);
     flex-wrap: wrap;
     justify-content: center;
-    font-family: var(--primary-font);
-    font-weight: bold;
     font-size: 3.5rem;
 
     &::before {
@@ -30,8 +28,8 @@
         }
     }
 
-    @media (min-width: $mobile-width) {
-        font-size: 7rem;
+    @media (width >= $mobile-width) {
+        font-size: 5rem;
         gap: var(--spacer-4);
     }
     

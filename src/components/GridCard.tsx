@@ -1,4 +1,5 @@
 "use client";
+import { latoItalic } from "@/fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -28,7 +29,10 @@ const GridCard = ({ gridArea, image, placeHolder }: GridCardProps) => {
                     height="800"
                     width="800"
                   />
-                  <div className="grid-card-title">{placeHolder}</div>
+
+                  <div className={`grid-card-title ${latoItalic.className}`}>
+                    {placeHolder}
+                  </div>
                 </Link>
               </span>
             </span>
