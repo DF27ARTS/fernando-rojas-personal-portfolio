@@ -28,7 +28,7 @@ const GridCard = ({ gridArea, image, placeHolder }: GridCardProps) => {
                     height="800"
                     width="800"
                   />
-                  <div className="grid-card-placeholder">{placeHolder}</div>
+                  <div className="grid-card-title">{placeHolder}</div>
                 </Link>
               </span>
             </span>

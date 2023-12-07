@@ -59,7 +59,7 @@ body {
     --_page-content-width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
   }
 
-  border-inline: 2px solid #ccc;
+  // border-inline: 2px solid #ccc;
   min-height: calc(100vh - (var(--navbar-height) + var(--footer-height)));
   width: var(--_page-content-width);
 }

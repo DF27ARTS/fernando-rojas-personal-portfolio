@@ -8,7 +8,7 @@
 
 @media (width >= $mobile-width) {
   .table-of-content__grid-content:has(.grid-card__content:hover) .grid-card__content:not(:hover) .grid-card-image {
-    filter: grayscale(.9);
+    filter: grayscale(1);
   }
 }
 
@@ -28,8 +28,11 @@
       text-decoration: none;
       color: white;
       animation-play-state: paused;  
-
       isolation: isolate;
+
+      &:hover .grid-card-image {
+        filter: brightness(1.1);
+      }
 
       .grid-card-image {
         position: absolute;
@@ -39,10 +42,11 @@
         object-fit: cover;
         z-index: -1;
 
-        transition: filter 500ms ease;
+        transition: 
+          filter 500ms ease;
       }
       
-      .grid-card-placeholder {
+      .grid-card-title {
         position: absolute;
         inset: 0;
 
@@ -51,6 +55,7 @@
         display: grid;
         place-items: center;
         font-size: 2rem;
+        font-weight: 700;
         position: relative;
         color: var(--white-color);
         z-index: 1;
@@ -63,7 +68,7 @@
 
         background: radial-gradient(
           circle at center,
-          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.5), 70%,
           transparent
         );
         z-index: -1;
