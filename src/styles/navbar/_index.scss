@@ -28,7 +28,7 @@
     --_nav-spacer: var(--spacer-2);
     --_nav_transition-duration: 400ms;
     --_nav-transition-timming: ease;
-    --_nav-background: rgb(4,0,33);
+    --_nav-background: hsl(247, 100%, 6%);
     --_nav-gradient-background: linear-gradient(45deg, blue, purple);
 
     display: flex;
@@ -157,19 +157,3 @@
         }
     }
 }
-
-// .get-up-btn-section {
-//     position: fixed;
-//     bottom: 0;
-//     width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
-//     outline: 1px solid lime;
-//     z-index: -1;
-
-//     display: flex;
-//     justify-content: flex-end;
-
-
-//     .get-up-btn {
-//         z-index: 2000;
-//     }
-// }
