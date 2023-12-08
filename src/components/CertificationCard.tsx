@@ -1,17 +1,14 @@
+import { CentificationType } from "@/app/studies/certifications";
 import { lato, latoItalic } from "@/fonts/fonts";
 import Image from "next/image";
-
-type CertificationCardProps = {
-  title: string;
-  image: string;
-  description: string[];
-};
+import React from "react";
 
 const CertificationCard = ({
   title,
   image,
-  description,
-}: Readonly<CertificationCardProps>) => {
+  academy,
+  date,
+}: Readonly<CentificationType>) => {
   return (
     <div className="certification-card">
       <div className="image-container">
@@ -19,20 +16,18 @@ const CertificationCard = ({
           className="certification-image"
           src={image}
           alt={title}
-          width="800"
-          height="800"
+          width="1000"
+          height="1000"
         />
       </div>
 
-      <div className="card-description">
-        <h2 className={`card-description__title ${latoItalic.className}`}>
+      <h2 className={`academy ${latoItalic.className}`}>{academy}</h2>
+
+      <div className="info-container">
+        <span className={`info-container__title ${lato.className}`}>
           {title}
-        </h2>
-        {description.map((paragraph) => {
-          return (
-            <p className={`single-paragraph ${lato.className}`}>{paragraph}</p>
-          );
-        })}
+        </span>
+        <span className={`info-container__date ${lato.className}`}>{date}</span>
       </div>
     </div>
   );

@@ -1,30 +1,45 @@
 @use "../variables" as *;
 
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --academy-color-percentage {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: false;
+}
+
 .certification-card {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1rem;
   padding: 1.5rem;
   border-radius: .5rem;
   background: var(--app-background);
-  width: 90%;
+  width: fit-content;
 
   &:nth-child(even) {
-    direction: rtl;
     align-self: flex-end;
-
-    .card-description {
-      text-align: end;
-    }
   }
 
   .image-container {
     display: grid;
     place-content: center;
-    height: 20rem;
-    width: 20rem;
+    width: 37rem;
+    aspect-ratio: 10/9;
     flex: none;
     border-radius: .5rem;
-    background-image: radial-gradient( circle 897px at 9% 80.3%,  rgba(55,60,245,1) 0%, rgba(234,161,15,0.90) 100.2% );
+    animation: gradient-animations 3s linear infinite;
+    background-image: conic-gradient( 
+      from var(--gradient-angle),
+      rgb(3, 154, 255),
+      rgba(152,70,242,1),
+      rgba(152,70,242,1),
+      rgb(3, 154, 255)
+    );
 
     .certification-image{
       height: fit-content;
@@ -32,13 +47,29 @@
     }
   }
 
-  .card-description {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  .academy {
+    margin-top: 1.5rem;
+    width: fit-content;
+    position: relative;
+    isolation: isolate;
 
-    &__title {
-      margin-bottom: .5rem;
-    }
+    background: linear-gradient(
+      -45deg,
+      var(--primary-text-color), var(--academy-color-percentage),
+      rgba(0, 0, 255, 0.473), calc(var(--academy-color-percentage) + 20%),
+      var(--primary-text-color)
+    );
+    // background-clip: text;
+    // color: transparent;
   }
+
+  .info-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@keyframes gradient-animations {
+  0% { --gradient-angle: 0deg }
+  100% { --gradient-angle: 360deg }
 }
