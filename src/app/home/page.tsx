@@ -1,5 +1,4 @@
 import GridCard from "@/components/GridCard";
-import FullName from "@/components/home-page/home-page-header/FullName";
 import Profetion from "@/components/home-page/home-page-header/Profetion";
 import ProfilePicture from "@/components/home-page/home-page-header/ProfilePicture";
 
@@ -7,7 +6,8 @@ import frontEndMentor from "@/assets/frontend-mentor-img.jpeg";
 import codepen from "@/assets/codepen.png";
 import emailMe from "@/assets/email-me-img.jpg";
 import studies from "@/assets/studies-img.jpg";
-import { lato } from "@/fonts/fonts";
+import { lato, playfairDisplay } from "@/fonts/fonts";
+import EmailForm from "@/components/EmailForm";
 
 const HomePage = () => {
   return (
@@ -18,7 +18,9 @@ const HomePage = () => {
         </div>
         <div>
           <div className="profile-title">
-            <FullName />
+            <h1 className={`profile-name ${playfairDisplay.className}`}>
+              FERNANDO ROJAS
+            </h1>
             <Profetion />
           </div>
         </div>
@@ -53,6 +55,8 @@ const HomePage = () => {
           />
         </div>
       </section>
+
+      <EmailForm />
     </>
   );
 };

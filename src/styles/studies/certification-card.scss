@@ -1,0 +1,44 @@
+@use "../variables" as *;
+
+.certification-card {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem;
+  border-radius: .5rem;
+  background: var(--app-background);
+  width: 90%;
+
+  &:nth-child(even) {
+    direction: rtl;
+    align-self: flex-end;
+
+    .card-description {
+      text-align: end;
+    }
+  }
+
+  .image-container {
+    display: grid;
+    place-content: center;
+    height: 20rem;
+    width: 20rem;
+    flex: none;
+    border-radius: .5rem;
+    background-image: radial-gradient( circle 897px at 9% 80.3%,  rgba(55,60,245,1) 0%, rgba(234,161,15,0.90) 100.2% );
+
+    .certification-image{
+      height: fit-content;
+      width: 100%;
+    }
+  }
+
+  .card-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__title {
+      margin-bottom: .5rem;
+    }
+  }
+}

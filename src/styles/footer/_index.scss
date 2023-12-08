@@ -1,13 +1,11 @@
 
 @use "../variables" as *;
+@use "send-email-form";
 
 .footer { 
-    // @media (width <= $mobile-width) {
-    //     --footer-height: calc(var(--navbar-height) * 2);
-    // }
-    // --footer-height: var(--navbar-height);
     --_footer-spacer: var(--spacer-2);
     --_footer-transform-duration: 500ms;
+    --_icons-container-height: var(--footer-height);
 
     --_twitter-background: hsl(203, 83%, 51%);
     --_github-background: hsl(210, 19%, 73%);
@@ -17,14 +15,14 @@
 
     height: var(--footer-height);
     width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
-    // outline: 1px solid lime;
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .footer-contact-links {
         margin-left: auto;
-        height: var(--footer-height);
+        height: var(--_icons-container-height);
         display: flex;
         align-items: center;
         gap: calc(var(--_footer-spacer) * 1.5);
@@ -32,7 +30,7 @@
 
         [icon-attribute] {
             --_icon-rotation-degree: 55deg;
-            --_icon-height: calc(var(--footer-height) / 2.2);
+            --_icon-height: calc(var(--_icons-container-height) / 2.2);
 
             &[icon-attribute=github] { --_icon-background: var(--_github-background); }
             &[icon-attribute=linkedIn] { --_icon-background: var(--_linkedIn-backgrond); }

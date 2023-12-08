@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import { EmailTemplate } from "@/components/email-template";
+import { EmailTemplate } from "@/components/EmailTemplate";
 import { NextResponse } from "next/server";
 
 const resend = new Resend("re_Spdy8B1i_4JUWu1PrkGspA1fzQBpWeU4K");

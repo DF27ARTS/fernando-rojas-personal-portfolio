@@ -1,69 +1,21 @@
 
 @use "../../variables" as *;
 
-.profile-name-container {
-    --animation-duration: 500ms;
-    --letter-delay: calc(var(--animation-duration) / 2.5);
-
+.profile-name {
     position: relative;
     display: flex;
     gap: var(--spacer-2);
     flex-wrap: wrap;
     justify-content: center;
     font-size: 3.5rem;
-
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 1rem 5rem;
-        background: var(--app-background-gradient);
-        opacity: .2;
-        filter: blur(3.5rem);
-    }
-
-
-    @for $i from 0 to 8 {
-        & .single-letter:nth-child(#{$i + 1}) {
-            --_letter-delay: var(--letter-delay) * #{$i};
-        }
-    }
+    text-align: center;
+    letter-spacing: var(--spacer-2);
 
     @media (width >= $mobile-width) {
         font-size: 5rem;
-        gap: var(--spacer-4);
     }
     
     @media (min-width: $mobile-width) and (max-width: $tablet-width) {
         font-size: 3rem;
-        gap: var(--spacer-1);
-    }
-
-
-    .single-word {
-
-        &:last-of-type {
-            --_word-delay: calc(var(--letter-delay) * 8);
-        }
-
-        display: flex;
-        gap: var(--spacer-1);
-
-        .single-letter {
-            line-height: .9;
-            opacity: 0;
-            transform-origin: center;
-
-            animation: single-letter var(--animation-duration) ease-out calc(var(--_letter-delay) + var(--_word-delay, 0ms)) forwards;
-
-            @keyframes single-letter {
-                0% {
-                    opacity: 0;
-                    transform: translateY(10rem) rotate(45deg); 
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0) rotate(0);                 }
-            }
-        }
     }
 }

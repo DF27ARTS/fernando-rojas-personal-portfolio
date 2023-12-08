@@ -15,7 +15,7 @@
     --_word-background: radial-gradient( 
         circle farthest-corner at 12.3% 19.3%,  hsl(240, 100%, 50%) 0%, hsl(300, 100%, 25%) 100.2% )
     ;
-    --_name-animation-delay: 3000ms;
+    --_name-animation-delay: 500ms;
     --_typing-animation-delay: calc(
         var(--_name-animation-delay) + var(--_word-delay, 0ms)
     );

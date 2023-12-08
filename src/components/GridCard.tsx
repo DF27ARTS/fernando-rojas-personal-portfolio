@@ -39,17 +39,6 @@ const GridCard = ({ gridArea, image, placeHolder }: GridCardProps) => {
           </span>
         </span>
       </span>
-      <button
-        onClick={async () => {
-          const response = await fetch("http://localhost:3000/api/send", {
-            method: "POST",
-          });
-          const data = await response.json();
-          console.log(data);
-        }}
-      >
-        Send email
-      </button>
     </div>
   );
 };
