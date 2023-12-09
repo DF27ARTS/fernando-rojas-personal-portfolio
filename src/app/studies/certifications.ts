@@ -10,7 +10,7 @@ export const certifications: CentificationType[] = [
     title: "Software Development Internship",
     image:
       "https://res.cloudinary.com/dleo66u17/image/upload/v1702049750/Deep_Skill_Intership_bet3ub.png",
-    academy: "Deep Skill",
+    academy: "Deep <Skill>",
     date: "2023-10-23 / 2023-11-30",
   },
   {
@@ -26,5 +26,12 @@ export const certifications: CentificationType[] = [
       "https://res.cloudinary.com/dleo66u17/image/upload/v1701992834/Fullstack_Sertification_hrtpcz.png",
     academy: "Henry Academy",
     date: "2022-02-15 / 2022-08-03",
+  },
+  {
+    title: "English C2 Upper Intermediate",
+    image:
+      "https://res.cloudinary.com/dleo66u17/image/upload/v1702056511/English_Certification_fo5ww5.png",
+    academy: "EF SET",
+    date: "2022-08-11",
   },
 ];

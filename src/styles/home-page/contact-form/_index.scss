@@ -1,0 +1,73 @@
+
+@use "../../variables" as *;
+.form-container {
+  --_border-unit: 1rem;
+
+  position: relative;
+  display: flex;
+  margin-inline: auto;
+  align-items: center;
+  width: fit-content;
+  flex: none;
+
+  .email-form {
+    width: 35rem;
+    height: 32rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: var(--_border-unit) 0 0 var(--_border-unit);
+    padding: 2rem;
+    background: var(--app-background);
+
+    & > * {
+      border-radius: .5rem;
+      box-shadow: 5px 5px 15px #0008;
+      border: none;
+      outline: none;
+      background: hsl(0, 0%, 88%);
+      padding-inline: 1.5rem;
+    }
+
+    &__name,
+    &__email,
+    &__organisation {
+      height: 2.5rem;
+    }
+
+    &__message {
+      resize: none;
+      flex-grow: 1;
+    }
+  }
+
+  .form-image {
+    width: 25rem;
+    height: 35rem;
+    object-fit: cover;
+    border-radius: 0 var(--_border-unit) var(--_border-unit) 0;
+    filter: brightness(.5);
+  }
+
+  .text {
+    position: absolute;
+    right: 0;
+    width: 25rem;
+    height: 35rem;
+    font-size: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    mix-blend-mode: multiply;
+    
+    background: linear-gradient(
+      90deg,
+      blue, purple
+    );
+    background-clip: text;
+    color: transparent;
+  }
+}

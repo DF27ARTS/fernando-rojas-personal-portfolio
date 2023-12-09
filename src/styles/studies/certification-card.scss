@@ -8,7 +8,7 @@
 
 @property --academy-color-percentage {
   syntax: "<percentage>";
-  initial-value: 0%;
+  initial-value: 150%;
   inherits: false;
 }
 
@@ -53,14 +53,16 @@
     position: relative;
     isolation: isolate;
 
+    animation: academy-title-animation 10s linear infinite;
     background: linear-gradient(
       -45deg,
       var(--primary-text-color), var(--academy-color-percentage),
-      rgba(0, 0, 255, 0.473), calc(var(--academy-color-percentage) + 20%),
+      rgb(3, 154, 255), calc(var(--academy-color-percentage) + 15%),
+      rgba(152,70,242,1), calc(var(--academy-color-percentage) + 30%),
       var(--primary-text-color)
     );
-    // background-clip: text;
-    // color: transparent;
+    background-clip: text;
+    color: transparent;
   }
 
   .info-container {
@@ -72,4 +74,9 @@
 @keyframes gradient-animations {
   0% { --gradient-angle: 0deg }
   100% { --gradient-angle: 360deg }
+}
+
+@keyframes academy-title-animation {
+  0% { --academy-color-percentage: 150% }
+  20%, 100% { --academy-color-percentage: -50% }
 }

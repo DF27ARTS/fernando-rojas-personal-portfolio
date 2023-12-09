@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import EmailForm from "../EmailForm";
+import EmailForm from "../ContactForm";
 
 const Footer = () => {
   return (

@@ -3,6 +3,7 @@
 
 .profile-name {
     position: relative;
+    isolation: isolate;
     display: flex;
     gap: var(--spacer-2);
     flex-wrap: wrap;
@@ -17,5 +18,18 @@
     
     @media (min-width: $mobile-width) and (max-width: $tablet-width) {
         font-size: 3rem;
+    }
+
+    &::before {
+        position: absolute;
+        content: "";
+        inset: 2rem;
+        background: linear-gradient(
+            -45deg,
+            hsla(300, 100%, 25%, 0.207),
+            hsl(240, 100%, 50%, 0.207)
+        );
+        filter: blur(3.5rem);
+        z-index: -1;
     }
 }

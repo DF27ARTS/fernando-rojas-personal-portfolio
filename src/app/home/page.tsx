@@ -7,7 +7,7 @@ import codepen from "@/assets/codepen.png";
 import emailMe from "@/assets/email-me-img.jpg";
 import studies from "@/assets/studies-img.jpg";
 import { lato, playfairDisplay } from "@/fonts/fonts";
-import EmailForm from "@/components/EmailForm";
+import ContactForm from "@/components/ContactForm";
 
 const HomePage = () => {
   return (
@@ -56,7 +56,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <EmailForm />
+      <ContactForm />
     </>
   );
 };

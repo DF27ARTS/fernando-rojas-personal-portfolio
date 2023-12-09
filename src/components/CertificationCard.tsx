@@ -1,5 +1,6 @@
 import { CentificationType } from "@/app/studies/certifications";
 import { lato, latoItalic } from "@/fonts/fonts";
+import placehorder from "@/assets/placehorder.png";
 import Image from "next/image";
 import React from "react";
 
@@ -13,6 +14,8 @@ const CertificationCard = ({
     <div className="certification-card">
       <div className="image-container">
         <Image
+          // placeholder="blur"
+          // blurDataURL={placehorder.src}
           className="certification-image"
           src={image}
           alt={title}
