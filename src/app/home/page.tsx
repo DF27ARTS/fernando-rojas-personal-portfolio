@@ -7,7 +7,8 @@ import codepen from "@/assets/codepen.png";
 import emailMe from "@/assets/email-me-img.jpg";
 import studies from "@/assets/studies-img.jpg";
 import { lato, playfairDisplay } from "@/fonts/fonts";
-import ContactForm from "@/components/ContactForm";
+import TechnologyCard from "@/components/TechnologyCard";
+import { techInformation } from "@/assets/tech-icons/tech-info";
 
 const HomePage = () => {
   return (
@@ -56,7 +57,18 @@ const HomePage = () => {
         </div>
       </section>
 
-      <ContactForm />
+      <div className="tech-animation-container">
+        <h3 className={`tech-container-title ${lato.className}`}>
+          MY <span className="fantacy-text">TECH</span> STACH
+        </h3>
+        <div className="tech-cards-container">
+          {techInformation.map((tech) => {
+            return <TechnologyCard image={tech.image} name={tech.name} />;
+          })}
+        </div>
+      </div>
+
+      {/* <ContactForm /> */}
     </>
   );
 };

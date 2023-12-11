@@ -1,0 +1,155 @@
+
+.tech-animation-container {
+  --_cards-amount: 20;
+  --_steps-in-front: 2;
+  --_step-duration: 1500ms;
+  --_total-dutation: calc(var(--_step-duration) * (var(--_cards-amount) * var(--_steps-in-front))); 
+  --_card-animation-duration: calc(var(--_total-dutation) / var(--_cards-amount));
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7.5rem;
+
+  .tech-container-title {
+    font-size: 4rem;
+    word-spacing: 1rem;
+
+    .fantacy-text {
+      position: relative;
+      isolation: isolate;
+
+      background: var(--app-background-gradient);
+      background-clip: text;
+      color: transparent;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 1.5rem;
+        background: var(--app-background-gradient);
+        filter: blur(3.5rem);
+      }
+    }
+  }
+  
+  .tech-cards-container {
+    position: relative;
+    height: 20rem;
+    width: 100%;
+
+    perspective: 1500px;
+    & * { transform-style: preserve-3d; } 
+
+    @for $i from 1 to 21 {
+      .tech-animation-card:nth-child(#{$i}) {
+        --_animation-card-delay: calc(var(--_card-animation-duration) * #{$i - 7});
+      }
+    }
+
+    &:has(.tech-animation-card:hover) .tech-animation-card{
+      animation-play-state: paused;
+    }
+
+    .tech-animation-card {
+      isolation: isolate;
+      position: relative;
+      position: absolute;
+      inset: auto 0 auto 0;
+      margin: auto;
+  
+      height: 20rem;
+      width: 15rem;
+      border-radius: .5rem;
+  
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      opacity: 0;
+  
+      animation: card-animation var(--_total-dutation) linear var(--_animation-card-delay) infinite;
+  
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(
+          45deg, hsl(300, 100%, 25%), 10%, #0008, 90%, hsl(240, 100%, 50%)
+        );
+        opacity: .3;
+        z-index: -1;
+      }
+  
+      .tech-card-img {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: inherit;
+        object-fit: cover;
+        filter: brightness(.2);
+        z-index: -1;
+      }
+  
+      .tech-container {
+        height: 100%;
+        width: 100%;
+        border-radius: inherit;
+        display: flex;
+        gap: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+  
+        z-index: 1;
+  
+        .tech-icon {
+          height: 7rem;
+          aspect-ratio: 1 / 1;
+        }
+  
+        .tech-name {
+          width: fit-content;
+          font-size: 2rem;
+          text-shadow: 0 0 .5rem #000;
+        }
+      }
+    }
+  }
+}
+
+@keyframes card-animation {
+  0%, 2.5%, 100% { 
+    transform: scale(.95) translateX(9rem) rotateY(-30deg) translateZ(-50rem);
+    opacity: 0;
+  }
+  5%, 7.5% { 
+    transform: scale(.95) translateX(9rem) rotateY(-30deg) translateZ(-40rem);
+    opacity: 0.35;
+  }
+  10%, 12.5%  { 
+    transform: scale(.95) translateX(9rem) rotateY(-30deg) translateZ(-30rem);
+    opacity: 0.7;
+  }
+  15%, 17.5% { 
+    transform: scale(1) translateX(0) rotateY(0) translateZ(0);
+    opacity: 1;
+  }
+  20%, 22.5% { 
+    transform: scale(.95) translateX(-9rem) rotateY(30deg) translateZ(-30rem);
+    opacity: 0.7;
+  }
+  25%, 27.5% { 
+    transform: scale(.95) translateX(-9rem) rotateY(30deg) translateZ(-40rem); 
+    opacity: 0.35;
+  }
+  30%, 32.5% { 
+    transform: scale(.95) translateX(-9rem) rotateY(30deg) translateZ(-50rem);
+    opacity: 0;
+    animation-timing-function: step-end;
+  }
+}
