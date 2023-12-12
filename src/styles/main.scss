@@ -25,6 +25,8 @@ body {
   color: var(--primary-text-color);
   isolation: isolate;
   overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 
   @media (width <= $mobile-width) {
     overflow-x: hidden;

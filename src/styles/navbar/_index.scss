@@ -31,6 +31,7 @@
     --_nav-background: hsl(247, 100%, 6%);
     --_nav-gradient-background: linear-gradient(45deg, blue, purple);
 
+    position: relative;
     display: flex;
     width: calc(100% - (var(--spacer-5) / 2));
 
@@ -69,7 +70,7 @@
         margin-left: auto;
 
         @media(width >= $tablet-width) {
-            gap: calc(var(--_nav-spacer) * 2.5); 
+            gap: calc(var(--_nav-spacer) * 3); 
         }
 
         @media(width <= $mobile-width) {
@@ -82,63 +83,43 @@
             position: relative;
             text-decoration: none;
             color: inherit;
-            height: calc(var(--navbar-height) / 1.7);
+            height: 100%;
             isolation: isolate;
-            border-radius: .175rem;
 
-            @media(width <= $mobile-width) {
-                height: calc(var(--navbar-height) * 1.7);
-                width: 100%;
+            &:hover::before { 
+                opacity: 1; 
             }
-
-
-            &::before, &::after {
+            &::before {
                 content: "";
                 position: absolute;
+                inset: auto auto 0 0;
                 z-index: -1;
                 border-radius: inherit;
-            }
-
-            &::before {
-                inset: 0;
-                background: var(--_nav-gradient-background);
+                background: #ccc;
+                height: .175rem;
+                width: 100%;
                 opacity: .3;
+                transition: opacity 250ms ease;
             }
 
-            &::after {
-                inset: .125rem;
-                background: var(--_nav-background);
-                transition: opacity var(--_nav_transition-duration) var(--_nav-transition-timming);
-            }
 
             &.selected { pointer-events: none; }
             &.selected::before {
-                opacity: 1;
-                margin: auto;
-                background: var(--_selected-btn-gradient);
-                filter: blur(1.5px);
-
-                --_selected-btn-gradient: conic-gradient(
-                    from var(--gradient-angle),
-                    hsl(300, 100%, 25%),
+                --_selected-btn-gradient: linear-gradient(
+                    90deg,
                     hsl(240, 100%, 50%),
                     hsl(300, 100%, 25%)
                 );
 
-                animation: 
-                    btn-selected 
-                    calc(var(--_nav_transition-duration) * 3)
-                    linear;
+                background: var(--_selected-btn-gradient);
+                margin: auto;
+                opacity: 1;
+
+                animation: btn-selected var(--_nav_transition-duration) linear;
 
                 @keyframes btn-selected {
-                    0% { --gradient-angle: 45deg; }
-                    100% { --gradient-angle: 405deg; }
-                }
-            }
-
-            @media(width >= $tablet-width) {
-                &:has([link-attribute]:is(:hover, :focus)):not(.selected)::after {
-                    opacity: .5;
+                    0% { width: 0%; }
+                    100% { width: 100%; }
                 }
             }
 
@@ -150,10 +131,85 @@
                 color: inherit;
                 height: 100%;
                 width: 100%;
-                padding: 0 var(--_nav-spacer);
                 border: none;
                 outline: none;
+                font-weight: bold;
             }
+        }
+    }
+
+    .slide-up-btn {
+
+        isolation: isolate;
+        position: fixed;
+        inset: auto 2rem 2rem auto;
+        height: 3.5rem;
+        width: 3.5rem;
+        padding: .5rem;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background: var(--app-background);
+
+        transition: transform 250ms ease-out;
+        transform: scale(0);
+        &.visible {
+            transform: scale(1);
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: -.175rem;
+                border-radius: inherit;
+                z-index: -2;
+                background: var(--app-background-gradient);
+                opacity: .5;
+
+                animation: slide-up-btn 500ms ease 300ms;
+                @keyframes slide-up-btn {
+                    0% { 
+                        transform: scale(1); 
+                        opacity: .5;
+                    }
+                    50% { 
+                        transform: scale(2.5); 
+                        opacity: .2;
+                    }
+                    100% { 
+                        transform: scale(1); 
+                        opacity: .5;
+                    }
+                }
+            }
+
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: var(--app-background);
+            z-index: -1;
+        }
+
+        &:hover .slide-up-text { transform: scale(1); }
+        .slide-up-text {
+            position: absolute;
+            inset: -2rem 0 auto 0;
+            margin: auto;
+            width: max-content;
+            color: var(--primary-text-color);
+            font-size: 1rem;
+            
+            transition: transform 150ms ease-out;
+            transform: scale(0);
+        }
+
+        .slice-up-btn-img {
+            height: 100%;
+            width: 100%;
         }
     }
 }
