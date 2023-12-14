@@ -66,10 +66,13 @@
       background: var(--app-background);
   
       display: flex; 
+      gap: 1.5rem;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       font-size: 3rem;
       opacity: 0;
+      z-index: 1;
   
       animation: card-animation var(--_total-dutation) linear var(--_card-animation-delay) infinite;
   
@@ -95,28 +98,15 @@
         z-index: -1;
       }
   
-      .tech-container {
-        height: 100%;
-        width: 100%;
-        border-radius: inherit;
-        display: flex;
-        gap: 1.5rem;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-  
-        z-index: 1;
-  
-        .tech-icon {
-          height: 7rem;
-          aspect-ratio: 1 / 1;
-        }
-  
-        .tech-name {
-          width: fit-content;
-          font-size: 2rem;
-          text-shadow: 0 0 .5rem #000;
-        }
+      .tech-icon {
+        height: 7rem;
+        aspect-ratio: 1 / 1;
+      }
+
+      .tech-name {
+        width: fit-content;
+        font-size: 2rem;
+        text-shadow: 0 0 .5rem #000;
       }
     }
   }
