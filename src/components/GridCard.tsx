@@ -1,16 +1,11 @@
 "use client";
+import { GridCardTypes } from "@/app/home/page";
 import { latoItalic } from "@/fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type GridCardProps = {
-  gridArea: string;
-  image: string;
-  placeHolder: string;
-};
-
-const GridCard = ({ gridArea, image, placeHolder }: GridCardProps) => {
+const GridCard = ({ gridArea, image, placeHolder, target }: GridCardTypes) => {
   return (
     <div
       style={{ "--grid-area": gridArea } as React.CSSProperties}
@@ -21,7 +16,7 @@ const GridCard = ({ gridArea, image, placeHolder }: GridCardProps) => {
           <span className="purple-600">
             <span className="purple-700">
               <span className="grid-card__content">
-                <Link className="content-link" href="/home">
+                <Link target={target} className="content-link" href="/home">
                   <Image
                     className="grid-card-image"
                     src={image}
@@ -29,7 +24,6 @@ const GridCard = ({ gridArea, image, placeHolder }: GridCardProps) => {
                     height="800"
                     width="800"
                   />
-
                   <div className={`grid-card-title ${latoItalic.className}`}>
                     {placeHolder}
                   </div>

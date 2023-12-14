@@ -4,9 +4,10 @@ import ProjectCard from "@/components/ProjectCard";
 const Projects = () => {
   return (
     <div className="projects-container">
-      {SoftwareProjects.map((project) => {
+      {SoftwareProjects.map((project, index) => {
         return (
           <ProjectCard
+            key={index}
             name={project.name}
             image={project.image}
             type={project.type}

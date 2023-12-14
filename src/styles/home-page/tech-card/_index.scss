@@ -1,8 +1,8 @@
 
 .tech-animation-container {
   --_cards-amount: 20;
-  --_steps-in-front: 2;
-  --_step-duration: 1500ms;
+  --_steps-in-front: 4;
+  --_step-duration: 1000ms;
   --_total-dutation: calc(var(--_step-duration) * (var(--_cards-amount) * var(--_steps-in-front))); 
   --_card-animation-duration: calc(var(--_total-dutation) / var(--_cards-amount));
 
@@ -45,7 +45,7 @@
 
     @for $i from 1 to 21 {
       .tech-animation-card:nth-child(#{$i}) {
-        --_animation-card-delay: calc(var(--_card-animation-duration) * #{$i - 7});
+        --_card-animation-delay: calc(var(--_card-animation-duration) * #{$i - 7});
       }
     }
 
@@ -63,6 +63,7 @@
       height: 20rem;
       width: 15rem;
       border-radius: .5rem;
+      background: var(--app-background);
   
       display: flex; 
       align-items: center;
@@ -70,7 +71,7 @@
       font-size: 3rem;
       opacity: 0;
   
-      animation: card-animation var(--_total-dutation) linear var(--_animation-card-delay) infinite;
+      animation: card-animation var(--_total-dutation) linear var(--_card-animation-delay) infinite;
   
       &::after {
         content: "";
@@ -78,9 +79,9 @@
         inset: 0;
         border-radius: inherit;
         background: linear-gradient(
-          45deg, hsl(300, 100%, 25%), 10%, #0008, 90%, hsl(240, 100%, 50%)
+          45deg, hsl(300, 100%, 25%), 20%, transparent, 80%, hsl(240, 100%, 50%)
         );
-        opacity: .3;
+        opacity: .1;
         z-index: -1;
       }
   
@@ -91,7 +92,6 @@
         width: 100%;
         border-radius: inherit;
         object-fit: cover;
-        // filter: brightness(.4);
         z-index: -1;
       }
   
@@ -122,33 +122,34 @@
   }
 }
 
+
 @keyframes card-animation {
-  0%, 2.5%, 100% { 
-    transform: scale(.95) translateX(9rem) rotateY(-30deg) translateZ(-50rem);
+  0%, 3.75%, 100% { 
+    transform: scale(.8) translateX(9rem) rotateY(-30deg) translateZ(-50rem);
     opacity: 0;
   }
-  5%, 7.5% { 
-    transform: scale(.95) translateX(9rem) rotateY(-30deg) translateZ(-40rem);
+  5%, 8.75% { 
+    transform: scale(.8) translateX(9rem) rotateY(-30deg) translateZ(-40rem);
     opacity: 0.35;
   }
-  10%, 12.5%  { 
-    transform: scale(.95) translateX(9rem) rotateY(-30deg) translateZ(-30rem);
+  10%, 13.75%  { 
+    transform: scale(.8) translateX(9rem) rotateY(-30deg) translateZ(-30rem);
     opacity: 0.7;
   }
-  15%, 17.5% { 
+  15%, 18.75% { 
     transform: scale(1) translateX(0) rotateY(0) translateZ(0);
     opacity: 1;
   }
-  20%, 22.5% { 
-    transform: scale(.95) translateX(-9rem) rotateY(30deg) translateZ(-30rem);
+  20%, 23.75% { 
+    transform: scale(.8) translateX(-9rem) rotateY(30deg) translateZ(-30rem);
     opacity: 0.7;
   }
-  25%, 27.5% { 
-    transform: scale(.95) translateX(-9rem) rotateY(30deg) translateZ(-40rem); 
+  25%, 28.75% { 
+    transform: scale(.8) translateX(-9rem) rotateY(30deg) translateZ(-40rem); 
     opacity: 0.35;
   }
-  30%, 32.5% { 
-    transform: scale(.95) translateX(-9rem) rotateY(30deg) translateZ(-50rem);
+  30%, 33.75% { 
+    transform: scale(.8) translateX(-9rem) rotateY(30deg) translateZ(-50rem);
     opacity: 0;
     animation-timing-function: step-end;
   }

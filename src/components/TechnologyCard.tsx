@@ -6,13 +6,13 @@ import { lato, latoItalic } from "@/fonts/fonts";
 const TechnologyCard = ({ name, image }: Readonly<TechCardTypes>) => {
   return (
     <div className="tech-animation-card">
-      <Image
+      {/* <Image
         height="500"
         width="500"
         src={TechCardBackground.src}
         alt="Card animation image background"
         className="tech-card-img"
-      />
+      /> */}
 
       <div className="tech-container">
         <Image

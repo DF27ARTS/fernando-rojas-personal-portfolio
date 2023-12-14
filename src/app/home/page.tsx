@@ -10,6 +10,40 @@ import { lato, playfairDisplay } from "@/fonts/fonts";
 import TechnologyCard from "@/components/TechnologyCard";
 import { techInformation } from "@/assets/tech-icons/tech-info";
 
+export type GridCardTypes = {
+  gridArea: string;
+  image: string;
+  placeHolder: string;
+  target: "_blank" | undefined;
+};
+
+const gridTableCards: GridCardTypes[] = [
+  {
+    placeHolder: "FRONTEND MENTOR",
+    image: frontEndMentor.src,
+    gridArea: "cell-one",
+    target: "_blank",
+  },
+  {
+    placeHolder: "CODEPEN",
+    image: codepen.src,
+    gridArea: "cell-two",
+    target: "_blank",
+  },
+  {
+    placeHolder: "STUDIES",
+    image: studies.src,
+    gridArea: "cell-three",
+    target: undefined,
+  },
+  {
+    placeHolder: "SEND ME AN EMAIL",
+    image: emailMe.src,
+    gridArea: "cell-four",
+    target: undefined,
+  },
+]
+
 const HomePage = () => {
   return (
     <>
@@ -34,26 +68,18 @@ const HomePage = () => {
         </h2>
 
         <div className="table-of-content__grid-content">
-          <GridCard
-            placeHolder="FRONTEND MENTOR"
-            image={frontEndMentor.src}
-            gridArea="cell-one"
-          />
-          <GridCard
-            placeHolder="CODEPEN"
-            image={codepen.src}
-            gridArea="cell-two"
-          />
-          <GridCard
-            placeHolder="STUDIES"
-            image={studies.src}
-            gridArea="cell-three"
-          />
-          <GridCard
-            placeHolder="SEND ME AN EMAIL"
-            image={emailMe.src}
-            gridArea="cell-four"
-          />
+          {
+            gridTableCards.map((card, index) => {
+              return (
+                <GridCard
+                  placeHolder={card.placeHolder}
+                  image={card.image}
+                  gridArea={card.gridArea}
+                  target={card.target}
+                />
+              )
+            })
+          }
         </div>
       </section>
 
@@ -62,8 +88,10 @@ const HomePage = () => {
           MY <span className="fantacy-text">TECH</span> STACH
         </h3>
         <div className="tech-cards-container">
-          {techInformation.map((tech) => {
-            return <TechnologyCard image={tech.image} name={tech.name} />;
+          {techInformation.map((tech, index) => {
+            return (
+              <TechnologyCard key={index} image={tech.image} name={tech.name} />
+            );
           })}
         </div>
       </div>
