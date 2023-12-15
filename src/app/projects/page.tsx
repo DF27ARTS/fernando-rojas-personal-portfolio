@@ -15,7 +15,7 @@ const Projects = () => {
             type={project.type}
             live={project.live}
             github={project.github}
-            technologies={project.technologies ? project.technologies : null}
+            technologies={project.technologies}
           />
         );
       })}

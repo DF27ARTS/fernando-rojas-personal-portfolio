@@ -2,52 +2,10 @@ import GridCard from "@/components/GridCard";
 import Profetion from "@/components/home-page/home-page-header/Profetion";
 import ProfilePicture from "@/components/home-page/home-page-header/ProfilePicture";
 
-import frontEndMentor from "@/assets/frontend-mentor-img.jpeg";
-import codepen from "@/assets/codepen.png";
-import emailMe from "@/assets/email-me-img.jpg";
-import studies from "@/assets/studies-img.jpg";
 import { lato, playfairDisplay } from "@/fonts/fonts";
 import TechnologyCard from "@/components/TechnologyCard";
 import { techInformation } from "@/assets/tech-icons/tech-info";
-
-export type GridCardTypes = {
-  gridArea: string;
-  image: string;
-  placeHolder: string;
-  target: "_blank" | undefined;
-  url: string;
-};
-
-const gridTableCards: GridCardTypes[] = [
-  {
-    placeHolder: "FRONTEND MENTOR",
-    image: frontEndMentor.src,
-    gridArea: "cell-one",
-    target: "_blank",
-    url: "https://www.frontendmentor.io/profile/DF27ARTS",
-  },
-  {
-    placeHolder: "CODEPEN",
-    image: codepen.src,
-    gridArea: "cell-two",
-    target: "_blank",
-    url: "https://codepen.io/DF27ARTS",
-  },
-  {
-    placeHolder: "STUDIES",
-    image: studies.src,
-    gridArea: "cell-three",
-    target: undefined,
-    url: "/studies",
-  },
-  {
-    placeHolder: "SEND ME AN EMAIL",
-    image: emailMe.src,
-    gridArea: "cell-four",
-    target: undefined,
-    url: "#",
-  },
-]
+import { gridTableCards } from "@/assets/home-grid-table/grid-table";
 
 const HomePage = () => {
   return (
@@ -73,19 +31,18 @@ const HomePage = () => {
         </h2>
 
         <div className="table-of-content__grid-content">
-          {
-            gridTableCards.map((card, index) => {
-              return (
-                <GridCard
-                  placeHolder={card.placeHolder}
-                  image={card.image}
-                  gridArea={card.gridArea}
-                  target={card.target}
-                  url={card.url}
-                />
-              )
-            })
-          }
+          {gridTableCards.map((card, index) => {
+            return (
+              <GridCard
+                key={index}
+                placeHolder={card.placeHolder}
+                image={card.image}
+                gridArea={card.gridArea}
+                target={card.target}
+                url={card.url}
+              />
+            );
+          })}
         </div>
       </section>
 

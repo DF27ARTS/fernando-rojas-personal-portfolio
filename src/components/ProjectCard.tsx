@@ -3,7 +3,14 @@ import { lato, latoItalic } from "@/fonts/fonts";
 import Image from "next/image";
 import GithubIcon from "@/assets/tech-icons/github-icon.svg";
 
-const ProjectCard = ({ name, image, type, live, github, technologies }: ProjectType) => {
+const ProjectCard = ({
+  name,
+  image,
+  type,
+  live,
+  github,
+  technologies,
+}: ProjectType) => {
   return (
     <div className="project-card">
       <Image
@@ -18,21 +25,20 @@ const ProjectCard = ({ name, image, type, live, github, technologies }: ProjectT
         <h2 className={`product-name ${latoItalic.className}`}>{name}</h2>
         <p className={`product-type ${lato.className}`}>{type}</p>
 
-        <div className="project-technologies" >
-          {
-            technologies !== null && technologies.map((tech, index) => {
+        <div className="project-technologies">
+          {technologies.length !== 0 &&
+            technologies.map((tech, index) => {
               return (
-                  <Image 
-                    index={index}
-                    className="product-tech-icon"
-                    src={tech}
-                    alt="Product tech icon"
-                    height="200"
-                    width="200"
-                  />
-              )
-            })
-          }
+                <Image
+                  key={index}
+                  className="product-tech-icon"
+                  src={tech}
+                  alt="Product tech icon"
+                  height="200"
+                  width="200"
+                />
+              );
+            })}
         </div>
 
         <div className="project-btns">
