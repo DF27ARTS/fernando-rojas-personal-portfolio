@@ -16,8 +16,8 @@ const ProjectCard = ({
       <Image
         src={image}
         alt={name}
-        width="800"
-        height="800"
+        width="1200"
+        height="1200"
         className="product-img"
       />
 
