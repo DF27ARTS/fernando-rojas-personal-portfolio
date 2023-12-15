@@ -15,6 +15,7 @@ export type GridCardTypes = {
   image: string;
   placeHolder: string;
   target: "_blank" | undefined;
+  url: string;
 };
 
 const gridTableCards: GridCardTypes[] = [
@@ -23,24 +24,28 @@ const gridTableCards: GridCardTypes[] = [
     image: frontEndMentor.src,
     gridArea: "cell-one",
     target: "_blank",
+    url: "https://www.frontendmentor.io/profile/DF27ARTS",
   },
   {
     placeHolder: "CODEPEN",
     image: codepen.src,
     gridArea: "cell-two",
     target: "_blank",
+    url: "https://codepen.io/DF27ARTS",
   },
   {
     placeHolder: "STUDIES",
     image: studies.src,
     gridArea: "cell-three",
     target: undefined,
+    url: "/studies",
   },
   {
     placeHolder: "SEND ME AN EMAIL",
     image: emailMe.src,
     gridArea: "cell-four",
     target: undefined,
+    url: "#",
   },
 ]
 
@@ -76,6 +81,7 @@ const HomePage = () => {
                   image={card.image}
                   gridArea={card.gridArea}
                   target={card.target}
+                  url={card.url}
                 />
               )
             })

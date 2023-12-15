@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const GridCard = ({ gridArea, image, placeHolder, target }: GridCardTypes) => {
+const GridCard = ({ gridArea, image, placeHolder, target, url }: GridCardTypes) => {
   return (
     <div
       style={{ "--grid-area": gridArea } as React.CSSProperties}
@@ -16,7 +16,7 @@ const GridCard = ({ gridArea, image, placeHolder, target }: GridCardTypes) => {
           <span className="purple-600">
             <span className="purple-700">
               <span className="grid-card__content">
-                <Link target={target} className="content-link" href="/home">
+                <Link target={target} className="content-link" href={url}>
                   <Image
                     className="grid-card-image"
                     src={image}

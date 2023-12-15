@@ -7,12 +7,15 @@ import PaperScissorsImg from "./paper-scissors-img.png";
 import CountdownImg from "./count-down-img.png";
 import MultiStepFormImg from "./multi-form-img.jpeg";
 
+import { techIconsOnly } from "@/assets/tech-icons/tech-info.ts";
+
 export type ProjectType = {
   name: string;
   image: string;
   type: string;
   live: string;
   github: string;
+  technologies?: string[];
 };
 
 export const SoftwareProjects: ProjectType[] = [
@@ -22,6 +25,16 @@ export const SoftwareProjects: ProjectType[] = [
     type: "Accademy Grupal Project",
     live: "https://proyecto-final-rho-three.vercel.app/",
     github: "https://github.com/Nicrosi/Proyecto-Final",
+    technologies: [
+      techIconsOnly.HTML,
+      techIconsOnly.CSS,
+      techIconsOnly.JavaScript,
+      techIconsOnly.ReactJS,
+      techIconsOnly.ReduxJS,
+      techIconsOnly.NodeJS,
+      techIconsOnly.ExpressJS,
+      techIconsOnly.PostgreSQL,
+    ]
   },
   {
     name: "Job Hunter",

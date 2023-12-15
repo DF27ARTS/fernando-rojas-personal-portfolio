@@ -1,3 +1,5 @@
+"use client";
+
 import { SoftwareProjects } from "@/assets/projects/projects";
 import ProjectCard from "@/components/ProjectCard";
 
@@ -13,6 +15,7 @@ const Projects = () => {
             type={project.type}
             live={project.live}
             github={project.github}
+            technologies={project.technologies ? project.technologies : null}
           />
         );
       })}

@@ -4,7 +4,7 @@
   --_steps-in-front: 4;
   --_step-duration: 1000ms;
   --_total-dutation: calc(var(--_step-duration) * (var(--_cards-amount) * var(--_steps-in-front))); 
-  --_card-animation-duration: calc(var(--_total-dutation) / var(--_cards-amount));
+  --_card-total-animation-delay: calc(var(--_total-dutation) / var(--_cards-amount));
 
   width: 100%;
   display: flex;
@@ -45,7 +45,7 @@
 
     @for $i from 1 to 21 {
       .tech-animation-card:nth-child(#{$i}) {
-        --_card-animation-delay: calc(var(--_card-animation-duration) * #{$i - 7});
+        --_card-animation-delay: calc(var(--_card-total-animation-delay) * #{$i - 7});
       }
     }
 

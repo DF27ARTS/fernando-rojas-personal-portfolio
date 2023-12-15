@@ -24,6 +24,52 @@ export type TechCardTypes = {
   image: string;
 };
 
+type TechIcons = {
+  HTML: string;
+  CSS: string;
+  SCSS: string;
+  NextJS: string;
+  ReactJS: string;
+  ReduxJS: string;
+  JavaScript: string;
+  TypeScript: string;
+  Tailwind: string;
+  NodeJS: string;
+  ExpressJS: string;
+  Python: string;
+  Java: string;
+  NestJS: string;
+  Auth0: string;
+  SequelizeJS: string;
+  PostgreSQL: string;
+  MySQL: string;
+  Git: string;
+  Github: string;
+};
+
+export const techIconsOnly: TechIcons = {
+  HTML: HTML.src,
+  CSS: CSS.src,
+  SCSS: SCSS.src,
+  NextJS: NextJS.src,
+  ReactJS: ReactJS.src,
+  ReduxJS: ReduxJS.src,
+  JavaScript: JavaScript.src,
+  TypeScript: TypeScript.src,
+  Tailwind: Tailwind.src,
+  NodeJS: NodeJS.src,
+  ExpressJS: ExpressJS.src,
+  Python: Python.src,
+  Java: Java.src,
+  NestJS: NestJS.src,
+  Auth0: Auth0.src,
+  SequelizeJS: SequelizeJS.src,
+  PostgreSQL: PostgreSQL.src,
+  MySQL: MySQL.src,
+  Git: Git.src,
+  Github: Github.src,
+};
+
 export const techInformation: TechCardTypes[] = [
   {
     name: "HTML",
