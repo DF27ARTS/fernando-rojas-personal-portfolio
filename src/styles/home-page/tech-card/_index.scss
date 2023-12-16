@@ -49,10 +49,6 @@
       }
     }
 
-    &:has(.tech-animation-card:hover) .tech-animation-card{
-      animation-play-state: paused;
-    }
-
     .tech-animation-card {
       isolation: isolate;
       position: relative;
@@ -106,7 +102,6 @@
       .tech-name {
         width: fit-content;
         font-size: 2rem;
-        text-shadow: 0 0 .5rem #000;
       }
     }
   }
