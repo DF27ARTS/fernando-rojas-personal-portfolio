@@ -1,38 +1,53 @@
-
+ 
 @use "../variables" as *;
 
 .profile-picture {
-    height: 20rem;
-    aspect-ratio: .75 / 1;
-    border-bottom-right-radius: 20%;
-    border-bottom-left-radius: 10%;
-    overflow: hidden;
+    --_picture-hieght: 25rem;
+
+    aspect-ratio: 1 / 1;
+    overflow: clip;
     position: relative;
+    border-radius: 5rem 25rem 5rem 8rem;
+
+    animation: background-animation 20s linear infinite;
 
     @media (min-width: $mobile-width) {
-        height: 35rem;
+        height: calc(var(--_picture-hieght) * 1.2);
+        width: var(--_picture-hieght);
     }
 
     .gradient-background {
         position: absolute;
-        bottom: 0;
+        inset: auto 0 0 0;
         background: linear-gradient(45deg, blue, purple);
-        height: 18rem;
-        aspect-ratio: .835 / 1;
-        border-top-left-radius: 20%;
-        border-top-right-radius: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 5rem 25rem 5rem 8rem;
 
-        @media (min-width: $mobile-width) {
-            height: 27rem;
+        @media (width >= $mobile-width) {
+            height: var(--_picture-hieght);
+            animation: background-animation 20s linear infinite;
         }
     }
 
     .picture {
         position: absolute;
-        bottom: 0;
-        height: 100%;
-        width: 100%;
+        inset: auto 0 0 0;
+        margin: auto;
+        height: calc(var(--_picture-hieght) * 1.2);
+        width: fit-content;
         object-fit: cover;
         filter: brightness(.7) contrast(1.2);
+    }
+}
+
+@keyframes background-animation {
+    0%, 27.5%, 100%{
+        border-radius: 5rem 25rem 5rem 8rem;
+    }
+    33%, 60.5% {
+        border-radius: 2rem;
+    }
+    66%, 93.5% {
+        border-radius: 15rem;
     }
 }
