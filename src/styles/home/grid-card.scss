@@ -76,6 +76,13 @@
   }
 
   // Card shadows 
+  @media (width >= $mobile-width) {
+    &:has(span:hover) span {
+      border-radius: .5rem;
+      transform: translateZ(var(--_shadow-offset));
+    }
+  }
+
   span {
     position: absolute;
     inset: 0;
@@ -85,12 +92,5 @@
     transition: 
       border-radius 250ms ease,
       transform 250ms ease;
-
-    @media (width >= $mobile-width) {
-      &:hover {
-        border-radius: .5rem;
-        transform: translateZ(var(--_shadow-offset));
-      }
-    }
   }
 }

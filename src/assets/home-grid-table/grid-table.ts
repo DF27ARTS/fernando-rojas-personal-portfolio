@@ -1,8 +1,7 @@
-
-import frontEndMentor from "@/assets/frontend-mentor-img.jpeg";
-import codepen from "@/assets/codepen.png";
-import emailMe from "@/assets/email-me-img.jpg";
-import studies from "@/assets/studies-img.jpg";
+import FrontEndMentor from "./frontend-mentor-img.jpeg";
+import Codepen from "./codepen.png";
+import Projects from "../projects/todo-app-img.png";
+import Studies from "./studies-img.jpg";
 
 export type GridCardTypes = {
   gridArea: string;
@@ -15,30 +14,30 @@ export type GridCardTypes = {
 export const gridTableCards: GridCardTypes[] = [
   {
     placeHolder: "FRONTEND MENTOR",
-    image: frontEndMentor.src,
+    image: FrontEndMentor.src,
     gridArea: "cell-one",
     target: "_blank",
     url: "https://www.frontendmentor.io/profile/DF27ARTS",
   },
   {
     placeHolder: "CODEPEN",
-    image: codepen.src,
+    image: Codepen.src,
     gridArea: "cell-two",
     target: "_blank",
     url: "https://codepen.io/DF27ARTS",
   },
   {
     placeHolder: "STUDIES",
-    image: studies.src,
+    image: Studies.src,
     gridArea: "cell-three",
     target: undefined,
     url: "/studies",
   },
   {
-    placeHolder: "SEND ME AN EMAIL",
-    image: emailMe.src,
+    placeHolder: "PROJECTS",
+    image: Projects.src,
     gridArea: "cell-four",
     target: undefined,
-    url: "#",
+    url: "/projects",
   },
 ];
