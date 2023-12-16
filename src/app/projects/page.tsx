@@ -9,7 +9,7 @@ const Projects = () => {
       {SoftwareProjects.map((project, index) => {
         return (
           <ProjectCard
-            key={index}
+            key={`${project.name}-${index}`}
             name={project.name}
             image={project.image}
             type={project.type}

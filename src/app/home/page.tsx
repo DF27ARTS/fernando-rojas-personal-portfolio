@@ -33,6 +33,7 @@ const HomePage = () => {
           {WorkExperiences.map((experience, index) => {
             return (
               <WorkExperience
+                key={index}
                 companyName={experience.companyName}
                 companyIcon={experience.companyIcon}
                 companyUrl={experience.companyUrl}
