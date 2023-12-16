@@ -3,44 +3,52 @@
 import { lato } from "@/fonts/fonts";
 import Link from "next/link";
 import { useCallback, useRef } from "react";
+import { usePathname } from "next/navigation";
+
 import SlideUpBtn from "@/assets/tech-icons/slide-up-icon.svg";
 import Image from "next/image";
 
 const Navbar = () => {
-  const navbarLinksRef = useRef<HTMLUListElement | null>(null);
-  const navbarRef = useRef<HTMLElement | null>(null);
+  const pathname = usePathname();
+  const slideUpBtnRef = useRef<HTMLButtonElement | null>(null);
 
-  const slideUpBtn = useRef<HTMLButtonElement | null>(null);
+  const navbarRef = useCallback((node: HTMLElement) => {
+    if (node) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            slideUpBtnRef.current?.classList.toggle(
+              "visible",
+              !entry.isIntersecting
+            );
+          });
+        },
+        {
+          rootMargin: `${window.innerHeight}px`,
+          threshold: 1,
+        }
+      );
+
+      observer.observe(node);
+    }
+  }, []);
 
   const slideUp = () => {
-    if (slideUpBtn.current) {
-      console.log("Button: ", slideUpBtn.current);
-      slideUpBtn.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
-  const selectPageBtn = (attribute: string) => {
-    const navbarLinks = navbarLinksRef.current;
-    const navbar = navbarRef?.current;
-
-    if (navbar && navbarLinks) {
-      navbarLinks.querySelector(".selected")?.classList.remove("selected");
-      navbarLinks
-        .querySelector(`[btn-attribute=${attribute}]`)
-        ?.classList.add("selected");
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
     <nav ref={navbarRef} className="navbar">
-      <ul ref={navbarLinksRef} className="navbar-links">
-        <li className="navbar-link selected" btn-attribute="home">
+      <ul className="navbar-links">
+        <li
+          className={`navbar-link ${pathname === "/home" ? "selected" : ""}`}
+          btn-attribute="home"
+        >
           <Link
-            className={lato.className}
-            onClick={() => selectPageBtn("home")}
+            className={`link ${lato.className}`}
             link-attribute="home"
             href="/home"
           >
@@ -48,10 +56,14 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <li className="navbar-link" btn-attribute="projects">
+        <li
+          className={`navbar-link ${
+            pathname === "/projects" ? "selected" : ""
+          }`}
+          btn-attribute="projects"
+        >
           <Link
-            className={lato.className}
-            onClick={() => selectPageBtn("projects")}
+            className={`link ${lato.className}`}
             link-attribute="projects"
             href="/projects"
           >
@@ -59,21 +71,12 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <li className="navbar-link" btn-attribute="contact">
+        <li
+          className={`navbar-link ${pathname === "/studies" ? "selected" : ""}`}
+          btn-attribute="studies"
+        >
           <Link
-            className={lato.className}
-            onClick={() => selectPageBtn("contact")}
-            link-attribute="contact"
-            href="/contact"
-          >
-            CONTACT
-          </Link>
-        </li>
-
-        <li className="navbar-link" btn-attribute="studies">
-          <Link
-            className={lato.className}
-            onClick={() => selectPageBtn("studies")}
+            className={`link ${lato.className}`}
             link-attribute="studies"
             href="/studies"
           >
@@ -84,10 +87,11 @@ const Navbar = () => {
 
       <button
         onClick={() => slideUp()}
-        ref={slideUpBtn}
-        className={`slide-up-btn visible ${lato.className}`}
+        ref={slideUpBtnRef}
+        className={`slide-up-btn ${lato.className}`}
       >
-        <span className="slide-up-text">Slide Up</span>
+        <span className={`slide-up-text ${lato.className}`}>Slide Up</span>
+
         <Image
           src={SlideUpBtn.src}
           alt="Slide up button"
