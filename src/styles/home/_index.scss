@@ -1,7 +1,11 @@
 
 @use "../variables" as *;
-@use "home-page-header";
+@use "home-header";
+@use "full-name";
+@use "profetion";
+@use "profile-picture";
 @use "grid-table";
+@use "grid-card";
 @use "contact-form";
 @use "tech-card";
 @use "work-experience";

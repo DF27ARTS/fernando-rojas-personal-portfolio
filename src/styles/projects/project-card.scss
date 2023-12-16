@@ -1,0 +1,122 @@
+
+@use "../variables" as *;
+
+.project-card {
+  --_card-border-radius: 1rem;
+
+  &:nth-child(even) {
+    direction: rtl;
+
+    .product-img {
+      border-radius: 0 var(--_card-border-radius) var(--_card-border-radius) 0;
+    }
+    
+    .product-information {
+      border-radius: var(--_card-border-radius) 0 0 var(--_card-border-radius);
+    }
+  }
+
+  display: flex;
+  align-items: center;
+
+  .product-img {
+    height: 25rem;
+    width: 30rem;
+    border-radius: var(--_card-border-radius) 0 0 var(--_card-border-radius);
+    object-fit: cover;
+  }
+
+  .product-information {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 2.5rem;
+    background: var(--app-background);
+    border-radius: 0 var(--_card-border-radius) var(--_card-border-radius) 0;
+    height: 20rem;
+    width: 100%;
+
+    .product-name {
+      font-size: 2rem;
+    }
+
+    .project-technologies {
+      
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      width: 70%;
+      
+      .product-tech-icon {
+        --_icon-size: 2.5rem;
+        
+        height: var(--_icon-size);
+        width: var(--_icon-size);
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+    .project-btns {
+      margin-top: auto;
+      display: flex;
+      gap: 2rem;
+
+      :where(.product-live-url, .product-github-url) {
+        
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        padding: .5rem;
+        height: 3rem;
+        width: 3rem;
+        position: relative;
+        isolation: isolate;
+
+        &::before, &::after {
+          content: "";
+          position: absolute;
+          z-index: -1;
+        }
+
+        &::before {
+          inset: 0;
+          border-radius: inherit;
+          background: var(--app-background-gradient);
+          opacity: .5;
+          transition: opacity 250ms ease;
+        }
+
+        &::after {
+          inset: 2px;
+          border-radius: inherit;
+          background: var(--app-background);
+        }
+
+        &:hover::before {
+          opacity: 1;
+        }
+
+        &:hover .ancher-placeholder {
+          transform: scale(1);
+        }
+
+        .ancher-placeholder {
+          position: absolute;
+          inset: auto auto -2rem 50%;
+          translate: -50% 0%;
+          color: var(--primary-text-color);
+          width: max-content;
+          transform: scale(0);
+          transition: transform 250ms ease-out;
+        }
+
+        .product-ancher-img {
+          object-fit: cover;
+          border-radius: inherit;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

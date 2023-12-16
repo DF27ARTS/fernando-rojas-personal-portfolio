@@ -1,0 +1,80 @@
+
+@use "../variables" as *;
+
+.slide-up-btn {
+  isolation: isolate;
+  position: fixed;
+  inset: auto 2rem 2rem auto;
+  height: 3rem;
+  width: 3rem;
+  padding: .5rem;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: var(--app-background);
+
+  transition: transform 250ms ease-out;
+  transform: scale(0);
+  &.visible {
+      transform: scale(1);
+
+      &::after {
+          content: "";
+          position: absolute;
+          inset: -.125rem;
+          border-radius: inherit;
+          z-index: -2;
+          background: var(--app-background-gradient);
+          opacity: .5;
+
+          animation: slide-up-btn 700ms ease 300ms;
+          @keyframes slide-up-btn {
+              0% { 
+                  transform: scale(1); 
+                  opacity: .5;
+              }
+              50% { 
+                  transform: scale(2.5); 
+                  opacity: .075;
+              }
+              100% { 
+                  transform: scale(1); 
+                  opacity: .5;
+              }
+          }
+      }
+  }
+
+  &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: var(--app-background);
+      z-index: -1;
+  }
+
+  &:hover .slide-up-text { 
+      opacity: 1;
+      transform: scale(1); 
+
+      transition: transform 150ms ease-out;
+  }
+  .slide-up-text {
+      position: absolute;
+      inset: -2rem auto auto 50%;
+      width: max-content;
+      color: var(--primary-text-color);
+      font-size: 1rem;
+
+      opacity: 0;
+      translate: -50% -50%;
+      transform: scale(0);
+  }
+
+  .slice-up-btn-img {
+      height: 100%;
+      width: 100%;
+  }
+}

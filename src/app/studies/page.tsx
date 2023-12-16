@@ -1,5 +1,5 @@
-import CertificationCard from "@/components/CertificationCard";
-import { certifications } from "./certifications";
+import CertificationCard from "@/components/studies/CertificationCard";
+import { certifications } from "../../assets/certification/certifications";
 
 const Studies = () => {
   return (

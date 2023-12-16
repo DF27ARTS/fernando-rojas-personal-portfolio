@@ -1,15 +1,15 @@
 "use client";
 
-import GridCard from "@/components/GridCard";
-import Profetion from "@/components/home-page/home-page-header/Profetion";
-import ProfilePicture from "@/components/home-page/home-page-header/ProfilePicture";
+import GridCard from "@/components/home/GridCard";
+import Profetion from "@/components/home/Profetion";
+import ProfilePicture from "@/components/home/ProfilePicture";
 
 import { lato, playfairDisplay } from "@/fonts/fonts";
-import TechnologyCard from "@/components/TechnologyCard";
+import TechnologyCard from "@/components/home/TechnologyCard";
 import { techInformation } from "@/assets/tech-icons/tech-info";
 import { gridTableCards } from "@/assets/home-grid-table/grid-table";
 import { WorkExperiences } from "@/assets/work-experience/work-experience";
-import WorkExperience from "@/components/WorkExperience";
+import WorkExperience from "@/components/home/WorkExperience";
 
 const HomePage = () => {
   return (

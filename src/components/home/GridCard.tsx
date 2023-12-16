@@ -1,11 +1,17 @@
 "use client";
-import { GridCardTypes } from "@/app/home/page";
+import { GridCardTypes } from "@/assets/home-grid-table/grid-table";
 import { latoItalic } from "@/fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const GridCard = ({ gridArea, image, placeHolder, target, url }: GridCardTypes) => {
+const GridCard = ({
+  gridArea,
+  image,
+  placeHolder,
+  target,
+  url,
+}: GridCardTypes) => {
   return (
     <div
       style={{ "--grid-area": gridArea } as React.CSSProperties}

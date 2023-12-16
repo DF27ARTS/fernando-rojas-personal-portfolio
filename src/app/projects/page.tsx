@@ -1,7 +1,7 @@
 "use client";
 
 import { SoftwareProjects } from "@/assets/projects/projects";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectCard from "@/components/projects/ProjectCard";
 
 const Projects = () => {
   return (

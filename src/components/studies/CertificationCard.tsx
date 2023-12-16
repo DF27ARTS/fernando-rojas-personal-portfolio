@@ -1,4 +1,4 @@
-import { CentificationType } from "@/app/studies/certifications";
+import { CentificationType } from "@/assets/certification/certifications";
 import { lato, latoItalic } from "@/fonts/fonts";
 import placehorder from "@/assets/placehorder.png";
 import Image from "next/image";
