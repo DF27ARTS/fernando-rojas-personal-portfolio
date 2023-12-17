@@ -4,7 +4,7 @@ import GridCard from "@/components/home/GridCard";
 import Profetion from "@/components/home/Profetion";
 import ProfilePicture from "@/components/home/ProfilePicture";
 
-import { lato, playfairDisplay } from "@/fonts/fonts";
+import { lato } from "@/fonts/fonts";
 import TechnologyCard from "@/components/home/TechnologyCard";
 import { techInformation } from "@/assets/tech-icons/tech-info";
 import { gridTableCards } from "@/assets/home-grid-table/grid-table";
@@ -20,10 +20,16 @@ const HomePage = () => {
         </div>
         <div>
           <div className="profile-title">
-            <h1 className={`profile-name ${playfairDisplay.className}`}>
+            <h1 className={`profile-name ${lato.className}`}>
               FERNANDO ROJAS
             </h1>
             <Profetion />
+            <p className={`profile-email ${lato.className}`} >
+              diego27fernando72@gmail.com
+            </p>
+            <p className={`profile-phone ${lato.className}`} >
+              +57 320 207 4828
+            </p>
           </div>
         </div>
       </section>

@@ -8,9 +8,9 @@
     gap: var(--spacer-2);
     flex-wrap: wrap;
     justify-content: center;
-    font-size: 3.5rem;
+    font-size: 3rem;
     text-align: center;
-    letter-spacing: var(--spacer-2);
+    letter-spacing: calc(var(--spacer-2) / 2);
 
     @media (width >= $mobile-width) {
         font-size: 5rem;

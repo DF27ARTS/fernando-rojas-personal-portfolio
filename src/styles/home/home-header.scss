@@ -6,7 +6,6 @@
     grid-template-columns: 1fr;
     grid-template-rows: 20rem fit-content;
     place-content: center;
-    gap: 5rem;
     height: fit-content;
     padding: 2.5rem 0;
 
@@ -36,19 +35,45 @@
         }
 
         .profile-title {
+            --_animation-delay: 7400ms;
+
             height: 100%;
+            width: min-content;
             display: flex;
-            gap: 2rem;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            margin-left: auto;
 
             @media (min-width: $mobile-width) {
-                gap: 4rem;
+                gap: 1rem;
             }   
 
             @media (min-width: $mobile-width) and (max-width: $tablet-width) {
                 gap: 3rem;
+            }
+
+            .profile-email { --_profile-contact-delay: 700ms; }
+            .profile-phone { --_profile-contact-delay: 950ms; }
+            .profile-email, .profile-phone {
+                display: grid;
+                position: relative;
+                overflow: clip;
+                color: #ccc;
+                opacity: 0;
+
+                animation: profile-contact 700ms ease-out calc(var(--_animation-delay) + var(--_profile-contact-delay)) forwards;
+
+                @keyframes profile-contact {
+                    0% {
+                        transform: translateY(3rem);
+                        opacity: 0;
+                    }
+                    100% {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
             }
         }
     }
