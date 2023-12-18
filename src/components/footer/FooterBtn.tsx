@@ -7,7 +7,7 @@ const FooterBtn = ({ iconAttribute, href, svgShape }: FooterBtnType) => {
       className="contact-link"
       icon-attribute={iconAttribute}
       href={href}
-      // target="_blank"
+      target="_blank"
     >
       <div className="icon-container">
         <svg

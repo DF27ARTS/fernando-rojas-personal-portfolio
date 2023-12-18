@@ -1,30 +1,114 @@
 import Image from "next/image";
-import formImg from "@/assets/form-contact-img.jpg";
+import contactFormImg from "@/assets/contact-form/contact-form-img.jpg";
+import { lato } from "@/fonts/fonts";
+import { ChangeEvent, FormEvent, useState } from "react";
+
+type FormImputType = {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+}
 
 const ContactForm = () => {
+  const [loader, setLoader] = useState<boolean>(false);
+  const [formInput, setFormImput] = useState<FormImputType>({
+    name: "",
+    email: "",
+    company: "",
+    message: "",
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const {name, value} = e.target;
+
+    setFormImput((prev: FormImputType) => {
+      return {
+        ...prev,
+        [name]: value,
+      }
+    })
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setLoader(true);
+    try {
+      console.log(formInput)
+    } catch (error) {
+      console.error(`There was an error: ${error}`)
+    }
+    finally {
+      setFormImput({
+        name: "",
+        email: "",
+        company: "",
+        message: "",
+      })
+      setLoader(false); 
+    }
+  }
+
   return (
-    <div className="form-container">
-      <form action="" className="email-form">
-        <input placeholder="Name" type="text" className="email-form__name" />
-        <input placeholder="Emal" type="text" className="email-form__email" />
-        <input
-          placeholder="Company"
-          type="text"
-          className="email-form__organisation"
+    <form onSubmit={(e) => handleSubmit(e)} className="form-container">
+      <div className="email-form">
+        <input 
+          onChange={(e) => handleChange(e)} 
+          placeholder="Name" 
+          name="name" 
+          type="text" 
+          value={formInput.name}
+          className={`email-form__name ${lato.className}`} 
         />
-        <textarea className="email-form__message" />
-      </form>
+        <input 
+          onChange={(e) => handleChange(e)} 
+          placeholder="Email" 
+          name="email" 
+          type="text" 
+          value={formInput.email}
+          className={`email-form__email ${lato.className}`} 
+        />
+        <input
+          onChange={(e) => handleChange(e)} 
+          placeholder="Company"
+          name="company"
+          type="text"
+          value={formInput.company}
+          className={`email-form__organisation ${lato.className}`}
+        />
+        <textarea 
+          onChange={(e) => handleChange(e)} 
+          placeholder="Body"
+          name="message" 
+          value={formInput.message}
+          className={`email-form__message ${lato.className}`}
+        />
+      </div>
 
-      <Image
-        className="form-image"
-        height="800"
-        width="800"
-        src={formImg.src}
-        alt="email form image"
-      />
+      <div className="images-container">
+        <Image
+          className="form-image one"
+          height="1500"
+          width="1500"
+          src={contactFormImg.src}
+          alt="email form image"
+        />
 
-      <h3 className="text">CONTACT ME</h3>
-    </div>
+        <Image
+          className="form-image two"
+          height="1500"
+          width="1500"
+          src={contactFormImg.src}
+          alt="email form image"
+        />
+
+        <h3 className="text">CONTACT ME</h3>
+
+        <button type="submit" className={`contact-btn ${lato.className}`} btn-text="SEND" ></button> 
+      </div> 
+
+    </form>
   );
 };
 

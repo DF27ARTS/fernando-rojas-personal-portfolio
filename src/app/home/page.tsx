@@ -10,6 +10,7 @@ import { techInformation } from "@/assets/tech-icons/tech-info";
 import { gridTableCards } from "@/assets/home-grid-table/grid-table";
 import { WorkExperiences } from "@/assets/work-experience/work-experience";
 import WorkExperience from "@/components/home/WorkExperience";
+import ContactForm from "@/components/home/ContactForm";
 
 const HomePage = () => {
   return (
@@ -79,7 +80,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <div className="tech-animation-container">
+      <section className="tech-animation-container">
         <h2 className={`tech-container-title ${lato.className}`}>
           MY <span className="fantacy-text">TECH</span> STACH
         </h2>
@@ -90,9 +91,15 @@ const HomePage = () => {
             );
           })}
         </div>
-      </div>
+      </section>
 
-      {/* <ContactForm /> */}
+      <section className="contact-form-container">
+        <h2 className={`contact-form-message ${lato.className}`}>
+          IF YOU <span className="gradient-text" >LIKE</span> MY WORK
+        </h2>
+
+        <ContactForm />
+      </section>
     </>
   );
 };

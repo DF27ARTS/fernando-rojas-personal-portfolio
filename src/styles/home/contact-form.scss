@@ -1,73 +1,183 @@
 
 @use "../variables" as *;
-.form-container {
-  --_border-unit: 1rem;
 
-  position: relative;
+.contact-form-container {
   display: flex;
-  margin-inline: auto;
+  gap: 10rem;
+  flex-direction: column;
   align-items: center;
-  width: fit-content;
-  flex: none;
 
-  .email-form {
-    width: 35rem;
-    height: 32rem;
-
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    border-radius: var(--_border-unit) 0 0 var(--_border-unit);
-    padding: 2rem;
-    background: var(--app-background);
-
-    & > * {
-      border-radius: .5rem;
-      box-shadow: 5px 5px 15px #0008;
-      border: none;
-      outline: none;
-      background: hsl(0, 0%, 88%);
-      padding-inline: 1.5rem;
-    }
-
-    &__name,
-    &__email,
-    &__organisation {
-      height: 2.5rem;
-    }
-
-    &__message {
-      resize: none;
-      flex-grow: 1;
-    }
-  }
-
-  .form-image {
-    width: 25rem;
-    height: 35rem;
-    object-fit: cover;
-    border-radius: 0 var(--_border-unit) var(--_border-unit) 0;
-    filter: brightness(.5);
-  }
-
-  .text {
-    position: absolute;
-    right: 0;
-    width: 25rem;
-    height: 35rem;
-    font-size: 4rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    mix-blend-mode: multiply;
+  .contact-form-message {
+    font-size: 3.5rem;
+    padding-block: 1px;
     
-    background: linear-gradient(
-      90deg,
-      blue, purple
-    );
-    background-clip: text;
-    color: transparent;
+    .gradient-text {
+      position: relative;
+      isolation: isolate;
+
+      background: var(--app-background-gradient);
+      background-clip: text;
+      color: transparent;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 1rem; 
+        background: var(--app-background-gradient);
+        filter: blur(3.5rem);
+      }
+    }
+  }
+
+  .form-container {
+    --_border-unit: 1rem;
+  
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.25fr .75fr;
+    width: 100%;
+    background: var(--app-background);
+    border-radius: var(--_border-unit);
+  
+    .email-form {
+      height: 30rem;
+  
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 2rem 5rem 2rem 5rem;
+  
+      & > * {
+        border-radius: .5rem;
+        box-shadow: 5px 5px 15px #0008;
+        border: none;
+        outline: none;
+        background: rgb(0, 1, 17);
+        color: var(--primary-text-color);
+        padding-inline: 1.5rem;
+      }
+  
+      &__name,
+      &__email,
+      &__organisation {
+        height: 2.5rem;
+      }
+  
+      &__message {
+        resize: none;
+        flex-grow: 1;
+        padding: 1.5rem;
+      }
+    }
+  
+    .images-container {
+      isolation: isolate;
+      position: relative;
+
+      display: grid;
+      align-content: space-between;
+      justify-content: center;
+      padding: 5rem 0 2rem 0;
+      
+      .form-image {
+        &.one {
+          --_translate-y: 5rem;
+          --_translate-x: 2rem;
+          --_clip-path: polygon(0% 0%, 35% 0%, 90% 100%, 15% 100%);
+        }
+
+        &.two {
+          --_translate-y: -5rem;
+          --_translate-x: -2rem;
+          --_clip-path: polygon(35% 0%, 100% 0%, 100% 100%, 90% 100%);
+        }
+        z-index: -2;
+        clip-path: var(--_clip-path);
+
+        position: absolute;
+        inset: 0 0 0 auto;
+        margin: auto;
+        filter: brightness(.8);
+
+        width: 25rem;
+        height: 35.5rem;
+        object-fit: cover;
+        border-radius: 0 var(--_border-unit) var(--_border-unit) 0;
+
+        // Low browser support (18-12-2023) ----------
+        view-timeline-name: --form-img-animation;
+        view-timeline-axis: block;
+        animation-timeline: --form-img-animation;
+        animation-range: entry 35% cover 55%;
+        animation-name: form-img-animation;
+        animation-fill-mode: both;
+        // -------------------------------------------
+
+        @keyframes form-img-animation {
+          0% { 
+            transform: translateY(var(--_translate-y)) translateX(var(--_translate-x));
+          }
+          100% {
+            transform: translateY(0) translateX(0);
+          }
+        }
+      }
+    
+      .text {
+        width: min-content;
+        height: fit-content;
+        font-size: 3.5rem;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        mix-blend-mode: color-burn;
+        
+        background: linear-gradient(
+          90deg,
+          hsla(240, 100%, 50%, 0.7), hsla(300, 100%, 25%, 0.7)
+        );
+        background-clip: text;
+        color: transparent;
+      }
+
+      .contact-btn {
+        --_skew-degree: 15deg;
+        
+        position: relative;
+        height: 2.5rem;
+        width: 8rem;
+        padding: .5rem 2rem;
+        border: none;
+        cursor: pointer;
+        margin-inline: auto;
+        color: #fff;
+        mix-blend-mode: multiply;
+        font-size: 1.1rem;
+        font-weight: bold;
+        letter-spacing: .25rem;
+        transition: mix-blend-mode 350ms ease;
+
+        background: linear-gradient(
+          45deg, hsl(300, 100%, 25%), 
+          55%, hsl(240, 100%, 50%)
+        );
+        transform: skew(var(--_skew-degree));
+
+        &::before {
+          content: attr(btn-text);
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-content: center;
+          transform: skew(calc(var(--_skew-degree) * -1));
+        }
+
+        &:hover {
+          mix-blend-mode: normal;
+        }
+      }
+    }
   }
 }
