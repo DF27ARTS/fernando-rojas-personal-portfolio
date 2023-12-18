@@ -1,3 +1,8 @@
+import DeepSkillCerfification from "./deep-skill-certification.webp";
+import FullstackCerfification from "./fullstack-certification.webp";
+import JavaCertification from "./java-certification.png";
+import EnglishCertification from "./english-certification.png";
+
 export type CentificationType = {
   title: string;
   image: string;
@@ -8,29 +13,25 @@ export type CentificationType = {
 export const certifications: CentificationType[] = [
   {
     title: "Software Development Internship",
-    image:
-      "https://res.cloudinary.com/dleo66u17/image/upload/v1702049750/Deep_Skill_Intership_bet3ub.png",
+    image:DeepSkillCerfification.src,
     academy: "Deep <Skill>",
     date: "2023-10-23 / 2023-11-30",
   },
   {
-    title: "Java Developer",
-    image:
-      "https://res.cloudinary.com/dleo66u17/image/upload/v1701992836/Java_Sertification_imv4lv.png",
-    academy: "Henry Upskilling",
-    date: "2023-08-01 / 2023-09-10",
-  },
-  {
     title: "Full Stack Web Developer",
-    image:
-      "https://res.cloudinary.com/dleo66u17/image/upload/v1701992834/Fullstack_Sertification_hrtpcz.png",
+    image: FullstackCerfification.src,
     academy: "Henry Academy",
     date: "2022-02-15 / 2022-08-03",
   },
   {
+    title: "Java Developer",
+    image: JavaCertification.src,
+    academy: "Henry Upskilling",
+    date: "2023-08-01 / 2023-09-10",
+  },
+  {
     title: "English C2 Upper Intermediate",
-    image:
-      "https://res.cloudinary.com/dleo66u17/image/upload/v1702056511/English_Certification_fo5ww5.png",
+    image: EnglishCertification.src,
     academy: "EF SET",
     date: "2022-08-11",
   },

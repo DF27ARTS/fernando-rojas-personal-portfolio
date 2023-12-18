@@ -13,62 +13,64 @@
 }
 
 .certification-card {
+  --_card-unit: 3rem;
+
+  position: relative;
+  isolation: isolate;
   display: flex;
-  flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem;
   border-radius: .5rem;
-  background: var(--app-background);
-  width: fit-content;
+  padding-bottom: var(--_card-unit);
+  width: 90%;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: var(--_card-unit) 0 0 var(--_card-unit);
+    border-radius: inherit;
+    background: var(--app-background);
+    z-index: -1;
+  }
 
   &:nth-child(even) {
     align-self: flex-end;
-  }
+    direction: rtl;
 
-  .image-container {
-    display: grid;
-    place-content: center;
-    width: 37rem;
-    aspect-ratio: 10/9;
-    flex: none;
-    border-radius: .5rem;
-    animation: gradient-animations 3s linear infinite;
-    background-image: conic-gradient( 
-      from var(--gradient-angle),
-      rgb(3, 154, 255),
-      rgba(152,70,242,1),
-      rgba(152,70,242,1),
-      rgb(3, 154, 255)
-    );
-
-    .certification-image{
-      height: fit-content;
-      width: 100%;
+    &::before {
+      inset: var(--_card-unit) var(--_card-unit) 0 0;
     }
   }
 
-  .academy {
-    margin-top: 1.5rem;
-    width: fit-content;
-    position: relative;
-    isolation: isolate;
-
-    animation: academy-title-animation 10s linear infinite;
-    background: linear-gradient(
-      -45deg,
-      var(--primary-text-color), var(--academy-color-percentage),
-      rgb(3, 154, 255), calc(var(--academy-color-percentage) + 15%),
-      rgba(152,70,242,1), calc(var(--academy-color-percentage) + 30%),
-      var(--primary-text-color)
-    );
-    background-clip: text;
-    color: transparent;
+  .certification-image{
+    height: fit-content;
+    width: 30rem;
+    border-radius: inherit;
   }
 
-  .info-container {
+  .card-information-container {
+    margin-top: calc(var(--_card-unit) * 2);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
+
+    .academy {
+      width: fit-content;
+      position: relative;
+      isolation: isolate;
+  
+      animation: academy-title-animation 10s linear infinite;
+      background: linear-gradient(
+        -45deg,
+        var(--primary-text-color), var(--academy-color-percentage),
+        rgb(3, 154, 255), calc(var(--academy-color-percentage) + 15%),
+        rgba(152,70,242,1), calc(var(--academy-color-percentage) + 30%),
+        var(--primary-text-color)
+      );
+      background-clip: text;
+      color: transparent;
+    }
   }
+
 }
 
 @keyframes gradient-animations {

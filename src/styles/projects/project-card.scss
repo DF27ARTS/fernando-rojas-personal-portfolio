@@ -41,14 +41,15 @@
     }
 
     .project-technologies {
+      --_icon-size: 2rem;
       
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(5, var(--_icon-size));
+      grid-template-rows: repeat(2, 1fr);
       gap: .5rem;
       width: 70%;
       
       .product-tech-icon {
-        --_icon-size: 2.5rem;
         
         height: var(--_icon-size);
         width: var(--_icon-size);

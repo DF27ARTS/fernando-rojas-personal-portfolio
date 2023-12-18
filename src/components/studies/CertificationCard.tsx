@@ -12,24 +12,21 @@ const CertificationCard = ({
 }: Readonly<CentificationType>) => {
   return (
     <div className="certification-card">
-      <div className="image-container">
-        <Image
-          // placeholder="blur"
-          // blurDataURL={placehorder.src}
-          className="certification-image"
-          src={image}
-          alt={title}
-          width="1000"
-          height="1000"
-        />
-      </div>
+      <Image
+        className="certification-image"
+        src={image}
+        alt={title}
+        width="1500"
+        height="1500"
+      />
 
-      <h2 className={`academy ${latoItalic.className}`}>{academy}</h2>
+      <div className="card-information-container">
+        <h2 className={`academy ${latoItalic.className}`}>{academy}</h2>
 
-      <div className="info-container">
         <span className={`info-container__title ${lato.className}`}>
           {title}
         </span>
+
         <span className={`info-container__date ${lato.className}`}>{date}</span>
       </div>
     </div>
