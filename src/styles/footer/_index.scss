@@ -4,14 +4,7 @@
 
 .footer { 
     --_footer-spacer: var(--spacer-2);
-    --_footer-transform-duration: 500ms;
     --_icons-container-height: var(--footer-height);
-
-    --_twitter-background: hsl(203, 83%, 51%);
-    --_github-background: hsl(210, 19%, 73%);
-    --_linkedIn-backgrond: hsl(201, 92%, 38%);
-    --_email-background: hsl(45, 100%, 48%);
-
 
     height: var(--footer-height);
     width: min(calc(100% - var(--spacer-5)), var(--app-max-width));

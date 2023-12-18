@@ -9,9 +9,11 @@ const Footer = () => {
       <h3 className={`footer-title ${latoItalic.className}`}>
         Fullstack Software Developer
       </h3>
+      
       <p className={`footer-email ${lato.className}`}>
         diego27fernando72@gmail.com
       </p>
+
       <p className={`footer-phone ${lato.className}`}>+57 320 207 4828</p>
 
       <ul className="footer-contact-links">

@@ -2,13 +2,21 @@
 @use "../variables" as *;
 
 .contact-link {
+  --_icon-transition-duration: 350ms;
   --_icon-rotation-degree: 55deg;
   --_icon-height: 3rem;
 
+  --_twitter-background: hsl(203, 83%, 51%);
+  --_github-background: hsl(210, 19%, 73%);
+  --_linkedIn-backgrond: hsl(201, 92%, 38%);
+  --_codepen-background: hsl(0, 0%, 80%);
+  --_whatsapp-background: hsl(113, 73%, 37%);
+
   &[icon-attribute=github] { --_icon-background: var(--_github-background); }
   &[icon-attribute=linkedIn] { --_icon-background: var(--_linkedIn-backgrond); }
-  &[icon-attribute=email] { --_icon-background: var(--_email-background); }
+  &[icon-attribute=codepen] { --_icon-background: var(--_codepen-background); }
   &[icon-attribute=twitter] { --_icon-background: var(--_twitter-background); }
+  &[icon-attribute=whatsapp] { --_icon-background: var(--_whatsapp-background); }
 
   height: var(--_icon-height);
   aspect-ratio: 1 / 1;
@@ -33,7 +41,7 @@
     display: grid;
     place-content: center;
     background: var(--app-background);
-    transition: transform var(--_footer-transform-duration) ease;
+    transition: transform var(--_icon-transition-duration) ease;
 
     @media (width >= $tablet-width) {
 
@@ -44,7 +52,7 @@
         background: var(--_icon-background);
         border-radius: inherit;
 
-        transition: transform calc(var(--_footer-transform-duration) * 1.5) ease;
+        transition: transform calc(var(--_icon-transition-duration) * 1.5) ease;
         transform: translateZ(-1px);
         z-index: -1;
       }
@@ -62,7 +70,7 @@
     width: var(--_svg-size);
 
     @media (width >= $tablet-width) {            
-      transition: transform var(--_footer-transform-duration) ease;
+      transition: transform var(--_icon-transition-duration) ease;
       transform:
           translateZ(0)
           rotateX(0);
@@ -70,7 +78,7 @@
   }
 
   @media (width >= $tablet-width) {
-    &:is(:hover, :focus) {
+    &:is(:hover) {
       .icon-container {
         position: relative;
         transform: rotateX(var(--_icon-rotation-degree));

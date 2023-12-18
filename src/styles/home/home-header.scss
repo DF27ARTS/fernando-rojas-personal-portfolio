@@ -59,7 +59,7 @@
                 display: grid;
                 position: relative;
                 overflow: clip;
-                color: #ccc;
+                color: hsl(0, 0%, 73%);
                 opacity: 0;
 
                 animation: profile-contact 700ms ease-out calc(var(--_animation-delay) + var(--_profile-contact-delay)) forwards;

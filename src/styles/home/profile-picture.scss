@@ -3,6 +3,7 @@
 
 .profile-picture {
     --_picture-hieght: 25rem;
+    * { user-select: none; }
 
     aspect-ratio: 1 / 1;
     overflow: clip;
@@ -22,6 +23,7 @@
         background: linear-gradient(45deg, blue, purple);
         aspect-ratio: 1 / 1;
         border-radius: 5rem 25rem 5rem 8rem;
+        opacity: .5;
 
         @media (width >= $mobile-width) {
             height: var(--_picture-hieght);
