@@ -4,26 +4,32 @@ import { NextRequest, NextResponse } from "next/server";
 
 const resend = new Resend("re_Spdy8B1i_4JUWu1PrkGspA1fzQBpWeU4K");
 
-export async function POST(request: Request) {
-  const {name, email, company, message} = request.body;
-
+export async function POST(req: NextRequest) {
   try {
-    const data = await resend.emails.send({
+    const {name, email, company, message} = await req.json();
+
+    await resend.emails.send({
       from: "onboarding@resend.dev",
       to: ["diego27fernando72@gmail.com"],
-      subject: "Hello world",
-      react: EmailTemplate({ firstName: "John" }),
-      text: "Hello world",
+      subject: "New message",
+      react: EmailTemplate({ 
+        name,
+        email,
+        company,
+        message,
+      }),
+      text: "New message",
     });
 
     return NextResponse.json(
       {
-        message: "Email Sent",
+        message: "Email Sent successfully",
       },
       {
         status: 200,
       }
     );
+
   } catch (error) {
     return NextResponse.json(
       {

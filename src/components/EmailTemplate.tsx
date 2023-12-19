@@ -1,10 +1,17 @@
-interface EmailTemplateProps {
-  firstName: string;
+type EmailTemplateProps = {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
 }
 
-export const EmailTemplate = ({ firstName }: Readonly<EmailTemplateProps>) => (
+export const EmailTemplate = ({ name, email, company, message }: Readonly<EmailTemplateProps>) => (
   <div>
-    <h1>Welcome, {firstName}!</h1>
+    <h1>Welcome, {name}!</h1>
+
+    <p>email: {email}</p>
+    <p>company: {company}</p>
+    <p>message: {message}</p>
     <a
       style={{
         paddingInline: "2rem",

@@ -30,12 +30,20 @@ const ContactForm = () => {
     })
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoader(true);
     try {
-      console.log(formInput)
+      const res = await fetch("/api/send", {
+        method: "POST",
+        body: JSON.stringify(formInput),
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+      const data = await res.json();
+      console.log(data);
     } catch (error) {
       console.error(`There was an error: ${error}`)
     }
@@ -79,7 +87,7 @@ const ContactForm = () => {
         />
         <textarea 
           onChange={(e) => handleChange(e)} 
-          placeholder="Body"
+          placeholder="Message"
           name="message" 
           value={formInput.message}
           className={`email-form__message ${lato.className}`}
@@ -89,23 +97,27 @@ const ContactForm = () => {
       <div className="images-container">
         <Image
           className="form-image one"
-          height="1500"
-          width="1500"
+          height="2000"
+          width="2000"
           src={contactFormImg.src}
           alt="email form image"
         />
 
         <Image
           className="form-image two"
-          height="1500"
-          width="1500"
+          height="2000"
+          width="2000"
           src={contactFormImg.src}
           alt="email form image"
         />
 
         <h3 className="text">CONTACT ME</h3>
 
-        <button type="submit" className={`contact-btn ${lato.className}`} btn-text="SEND" ></button> 
+        <button 
+          type="submit" 
+          className={`contact-btn ${lato.className}`} 
+          btn-text={loader ? "LOADING" : "SEND"} 
+        ></button> 
       </div> 
 
     </form>
