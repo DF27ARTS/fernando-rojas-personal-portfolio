@@ -53,15 +53,17 @@ const HomePage = () => {
           })}
         </div>
 
-        <h2 className={`work-experience-title ${lato.className}`}>
-          MY <span>WORK</span> EXPERIENCE
+        <h2 className={`work-experience-title ${lato.className}`} translate="no">
+          MY <span translate="no">WORK</span> EXPERIENCE
         </h2>
       </section>
 
       <section className="table-of-content">
-        <h2 className={`table-of-content__title ${lato.className}`}>
-          SOME <span className="word-one">OF</span>
-          <span className="word-two">MY</span> WORK
+        <h2 className={`table-of-content__title ${lato.className}`} translate="no">
+          SOME 
+          <span className="word-one" translate="no">OF</span>
+          <span className="word-two" translate="no">MY</span> 
+          WORK
         </h2>
 
         <div className="table-of-content__grid-content">

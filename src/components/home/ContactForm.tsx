@@ -10,7 +10,14 @@ type FormImputType = {
   message: string;
 }
 
+type FormErrorType = {
+  name: string;
+  errorMessage: string;
+}
+
 const ContactForm = () => {
+  const [error, setError] = useState<FormErrorType>({name: "", errorMessage: ""});
+  const [success, setSuccess] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [formInput, setFormImput] = useState<FormImputType>({
     name: "",
@@ -19,8 +26,18 @@ const ContactForm = () => {
     message: "",
   });
 
+  const setSuccessMessage = () => {
+    setSuccess("Your email has been sent successfully");
+
+    setTimeout(() => {
+      setSuccess("");
+    }, 5000)
+  }
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = e.target;
+    if (success) setSuccess("");
+    if (error.name) setError({name: "", errorMessage: ""});
 
     setFormImput((prev: FormImputType) => {
       return {
@@ -33,6 +50,20 @@ const ContactForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!formInput.name || !formInput.email || !formInput.message) {
+      setError(() => {
+        if (!formInput.name) return {name: "name", errorMessage: "Please enter your name"}
+        else if (!formInput.email) return {name: "email", errorMessage: "Please provide your email address"}
+        else if (!regex.test(formInput.email)) return {name: "email", errorMessage: "Please enter a valid email address"}
+        else if (!formInput.message) return {name: "message", errorMessage: "Please write your message"}
+        else return {name: "", errorMessage: ""}
+      })
+      return;
+    }
+
+    setError({name: "", errorMessage: ""})
     setLoading(true);
     try {
       await fetch("/api/send", {
@@ -42,8 +73,10 @@ const ContactForm = () => {
           "Content-Type": "application/json",
         }
       })
+
+      setSuccessMessage()
     } catch (error) {
-      console.error(`There was an error: ${error}`)
+      setError({name: "error", errorMessage: "There was an error, please try again"});
     }
     finally {
       setFormImput({
@@ -58,14 +91,14 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="form-container">
-      <div className="email-form">
+      <div className="contact-form">
         <input 
           onChange={(e) => handleChange(e)} 
           placeholder="Name *" 
           name="name" 
           type="text" 
           value={formInput.name}
-          className={`email-form__name ${lato.className}`} 
+          className={`contact-form__name ${lato.className} ${error.name === "name" ? "error" : ""}`} 
         />
         <input 
           onChange={(e) => handleChange(e)} 
@@ -73,7 +106,7 @@ const ContactForm = () => {
           name="email" 
           type="text" 
           value={formInput.email}
-          className={`email-form__email ${lato.className}`} 
+          className={`contact-form__email ${lato.className} ${error.name === "email" ? "error" : ""}`} 
         />
         <input
           onChange={(e) => handleChange(e)} 
@@ -81,15 +114,22 @@ const ContactForm = () => {
           name="company"
           type="text"
           value={formInput.company}
-          className={`email-form__organisation ${lato.className}`}
+          className={`contact-form__organisation ${lato.className}`}
         />
         <textarea 
           onChange={(e) => handleChange(e)} 
           placeholder="Message"
           name="message" 
           value={formInput.message}
-          className={`email-form__message ${lato.className}`}
+          className={`contact-form__message ${lato.className} ${error.name === "message" ? "error" : ""}`}
         />
+        {
+          error.name ?
+            <p className={`contact-form__error ${lato.className}`}>{error.errorMessage}</p>
+          : success ? 
+            <p className={`contact-form__success ${lato.className}`}>{success}</p>
+          : null
+        }
       </div>
 
       <div className="images-container">
@@ -109,7 +149,7 @@ const ContactForm = () => {
           alt="email form image"
         />
 
-        <h3 className="text" >CONTACT ME</h3>
+        <h3 className="text" translate="no" >CONTACT ME</h3>
 
         <button 
           type="submit" 

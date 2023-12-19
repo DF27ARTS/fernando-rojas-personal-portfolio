@@ -6,7 +6,7 @@ import { lato, latoItalic } from "@/fonts/fonts";
 const Footer = () => {
   return (
     <footer className="footer">
-      <h3 className={`footer-title ${latoItalic.className}`}>
+      <h3 className={`footer-title ${latoItalic.className}`} translate="no">
         Fullstack Software Developer
       </h3>
       

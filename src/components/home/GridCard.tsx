@@ -30,7 +30,7 @@ const GridCard = ({
                     height="800"
                     width="800"
                   />
-                  <div className={`grid-card-title ${latoItalic.className}`}>
+                  <div className={`grid-card-title ${latoItalic.className}`} translate="no">
                     {placeHolder}
                   </div>
                 </Link>

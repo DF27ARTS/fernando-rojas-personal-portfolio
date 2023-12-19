@@ -39,15 +39,16 @@
     background: var(--app-background);
     border-radius: var(--_border-unit);
   
-    .email-form {
+    .contact-form {
+      --_error-color: hsl(7, 97%, 30%);
       height: 30rem;
   
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
       padding: 2rem 5rem 2rem 5rem;
   
-      & > * {
+      & > *:not(.contact-form__success, .contact-form__error) {
         border-radius: .5rem;
         box-shadow: 5px 5px 15px #0008;
         border: none;
@@ -60,8 +61,20 @@
   
       &__name,
       &__email,
-      &__organisation {
+      &__organisation,
+      &__message {
         height: 2.5rem;
+
+        &.error {
+          outline: 1px solid var(--_error-color);
+          animation: error-animation 250ms linear;
+
+          @keyframes error-animation {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2rem); }
+            75% { transform: translateX(2rem); }
+          }
+        }
       }
   
       &__message {
@@ -72,6 +85,16 @@
         &::-webkit-scrollbar {
           width: 0;
         }
+      }
+
+      &__success {
+        color: rgb(3, 173, 3);
+        font-weight: bold;
+      }
+
+      &__error {
+        color: var(--_error-color);
+        font-weight: bold;
       }
     }
   

@@ -13,7 +13,7 @@ const TechnologyCard = ({ name, image }: Readonly<TechCardTypes>) => {
         alt={name}
         className="tech-icon"
       />
-      <p className={`tech-name ${latoItalic.className}`}>{name}</p>
+      <p className={`tech-name ${latoItalic.className}`} translate="no">{name}</p>
     </div>
   );
 };

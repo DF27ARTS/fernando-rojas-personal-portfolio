@@ -27,14 +27,17 @@ const WorkExperience = ({
       </div>
 
       <div className="company-information">
-        <h2 className={`company-name ${latoItalic.className}`}>
+        <h2 className={`company-name ${latoItalic.className}`} translate="no">
           {companyName}
         </h2>
-        <p className={`work-period ${lato.className}`}>{date}</p>
+        <p className={`work-period ${lato.className}`}>
+          {date}
+        </p>
         <a
           href={companyUrl}
           target="_blank"
           className={`company-url ${lato.className}`}
+          translate="no"
         >
           {companyUrlName}
         </a>
