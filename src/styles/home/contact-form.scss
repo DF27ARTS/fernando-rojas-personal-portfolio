@@ -35,7 +35,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 1.25fr .75fr;
-    width: 100%;
+    width: 90%;
     background: var(--app-background);
     border-radius: var(--_border-unit);
   
@@ -54,6 +54,7 @@
         outline: none;
         background: rgb(0, 1, 17);
         color: var(--primary-text-color);
+        font-weight: bold;
         padding-inline: 1.5rem;
       }
   
@@ -67,6 +68,10 @@
         resize: none;
         flex-grow: 1;
         padding: 1.5rem;
+
+        &::-webkit-scrollbar {
+          width: 0;
+        }
       }
     }
   
@@ -97,18 +102,19 @@
         position: absolute;
         inset: 0 0 0 auto;
         margin: auto;
-        filter: brightness(.8);
+        filter: brightness(.7);
 
-        width: 25rem;
+        width: 115%;
         height: 35.5rem;
         object-fit: cover;
         border-radius: 0 var(--_border-unit) var(--_border-unit) 0;
 
-        // Low browser support (18-12-2023) ----------
+        // Low browser support 66% (18-12-2023)
+        // -------------------------------------------
         view-timeline-name: --form-img-animation;
         view-timeline-axis: block;
         animation-timeline: --form-img-animation;
-        animation-range: entry 35% cover 55%;
+        animation-range: entry 25% cover 50%;
         animation-name: form-img-animation;
         animation-fill-mode: both;
         // -------------------------------------------
@@ -132,19 +138,19 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        mix-blend-mode: color-burn;
-        
-        background: linear-gradient(
-          90deg,
-          hsla(240, 100%, 50%, 0.7), hsla(300, 100%, 25%, 0.7)
-        );
-        background-clip: text;
-        color: transparent;
+        mix-blend-mode: color-dodge;
+        color: #858484;
       }
 
       .contact-btn {
         --_skew-degree: 15deg;
+        --_transition-duration: 500ms;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
         
+        isolation: isolate;
         position: relative;
         height: 2.5rem;
         width: 8rem;
@@ -153,29 +159,93 @@
         cursor: pointer;
         margin-inline: auto;
         color: #fff;
-        mix-blend-mode: multiply;
-        font-size: 1.1rem;
-        font-weight: bold;
+        margin-inline: auto;
         letter-spacing: .25rem;
-        transition: mix-blend-mode 350ms ease;
+        border-radius: .5rem;
+        background: transparent;
 
-        background: linear-gradient(
-          45deg, hsl(300, 100%, 25%), 
-          55%, hsl(240, 100%, 50%)
-        );
-        transform: skew(var(--_skew-degree));
+        transition:
+          height var(--_transition-duration) ease,
+          width var(--_transition-duration) ease;
 
+        &:hover::before { opacity: 1; }
         &::before {
-          content: attr(btn-text);
+          content: "";
           position: absolute;
           inset: 0;
-          display: grid;
-          place-content: center;
-          transform: skew(calc(var(--_skew-degree) * -1));
+          transform: skew(var(--_skew-degree));
+          border-radius: .45rem;
+          background: linear-gradient(
+            45deg, hsl(300, 79%, 34%), 
+            55%, hsl(240, 93%, 56%)
+          );
+          z-index: -1;
+          opacity: .7;
+          transition: opacity 350ms ease;
         }
-
-        &:hover {
-          mix-blend-mode: normal;
+  
+        /* -----------------
+         * Loading animation
+        */
+        &[btn-loading-state=LOADING] {
+          --_loading-size: 7rem;
+          --_skew-unit: 0deg;
+          --_animation-duration: 4s;
+          
+          pointer-events: none;
+          height: var(--_loading-size);
+          width: var(--_loading-size);
+          background: transparent;
+  
+          &::before {
+            --_skew-unit: calc(var(--_skew-degree) * -1);
+  
+            opacity: .5;
+            transform: skew(var(--_skew-unit));
+            background: linear-gradient(
+              45deg, hsl(300, 79%, 34%), 
+              55%, hsl(240, 93%, 56%)
+            );
+  
+            animation: form-loading var(--_animation-duration) linear infinite;
+            animation-delay: var(--_transition-duration);
+          }   
+          
+          &::after {
+            --_skew-unit: var(--_skew-degree);
+  
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .4;
+            border-radius: inherit;
+            transform: skew(var(--_skew-unit));
+            z-index: -1;
+            background: linear-gradient(
+              45deg, hsl(300, 100%, 25%), 
+              55%, hsl(240, 100%, 50%)
+            );
+  
+            animation: form-loading var(--_animation-duration) linear infinite;
+            animation-delay: var(--_transition-duration);
+            animation-direction: reverse;
+          }
+          
+          .form-btn-text {
+            z-index: 10;
+          }
+  
+          @keyframes form-loading {
+            0% {
+              transform: rotate(0deg) skew(var(--_skew-unit));
+            }
+            50% {
+              transform: rotate(180deg) skew(var(--_skew-unit));
+            }
+            100% {
+              transform: rotate(360deg) skew(var(--_skew-unit));
+            }
+          }
         }
       }
     }

@@ -11,7 +11,7 @@ type FormImputType = {
 }
 
 const ContactForm = () => {
-  const [loader, setLoader] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [formInput, setFormImput] = useState<FormImputType>({
     name: "",
     email: "",
@@ -33,17 +33,15 @@ const ContactForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setLoader(true);
+    setLoading(true);
     try {
-      const res = await fetch("/api/send", {
+      await fetch("/api/send", {
         method: "POST",
         body: JSON.stringify(formInput),
         headers: {
           "Content-Type": "application/json",
         }
       })
-      const data = await res.json();
-      console.log(data);
     } catch (error) {
       console.error(`There was an error: ${error}`)
     }
@@ -54,7 +52,7 @@ const ContactForm = () => {
         company: "",
         message: "",
       })
-      setLoader(false); 
+      setLoading(false); 
     }
   }
 
@@ -63,7 +61,7 @@ const ContactForm = () => {
       <div className="email-form">
         <input 
           onChange={(e) => handleChange(e)} 
-          placeholder="Name" 
+          placeholder="Name *" 
           name="name" 
           type="text" 
           value={formInput.name}
@@ -71,7 +69,7 @@ const ContactForm = () => {
         />
         <input 
           onChange={(e) => handleChange(e)} 
-          placeholder="Email" 
+          placeholder="Email *" 
           name="email" 
           type="text" 
           value={formInput.email}
@@ -111,13 +109,18 @@ const ContactForm = () => {
           alt="email form image"
         />
 
-        <h3 className="text">CONTACT ME</h3>
+        <h3 className="text" >CONTACT ME</h3>
 
         <button 
           type="submit" 
-          className={`contact-btn ${lato.className}`} 
-          btn-text={loader ? "LOADING" : "SEND"} 
-        ></button> 
+          className={`
+            contact-btn 
+            ${lato.className}
+          `} 
+          btn-loading-state={loading ? "LOADING" : "" }
+        >
+          {loading ? "SENDING" : "SEND"}
+        </button> 
       </div> 
 
     </form>
