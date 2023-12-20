@@ -1,4 +1,4 @@
-import picture from "@/assets/profile-picture-2.png";
+import picture from "@/assets/Profile-min.png";
 import Image from "next/image";
 
 const ProfilePicture = () => {
@@ -6,8 +6,8 @@ const ProfilePicture = () => {
     <div className="profile-picture">
       <div className="gradient-background"></div>
       <Image
-        height="1200"
-        width="1200"
+        height="2000"
+        width="2000"
         src={picture.src}
         alt="Portfolio picture"
         className="picture"

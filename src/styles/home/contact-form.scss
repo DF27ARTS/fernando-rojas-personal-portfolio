@@ -6,6 +6,7 @@
   gap: 10rem;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 10rem;
 
   .contact-form-message {
     font-size: 3.5rem;
@@ -111,7 +112,7 @@
         &.one {
           --_translate-y: 5rem;
           --_translate-x: 2rem;
-          --_clip-path: polygon(0% 0%, 35% 0%, 90% 100%, 15% 100%);
+          --_clip-path: polygon(0% 0%, 36% 0%, 91% 100%, 15% 100%);
         }
 
         &.two {

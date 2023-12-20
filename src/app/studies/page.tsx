@@ -1,3 +1,5 @@
+"use client";
+
 import CertificationCard from "@/components/studies/CertificationCard";
 import { certifications } from "../../assets/certification/certifications";
 

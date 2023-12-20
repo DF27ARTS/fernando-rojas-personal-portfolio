@@ -54,7 +54,7 @@ body {
   &::-webkit-scrollbar-thumb {
     background: var(--_scrollbar-thumb-background);
     border-radius: 50vh;
-   }
+  }
 }
 
 .home-page {
@@ -68,7 +68,6 @@ body {
   flex-direction: column;
   gap: var(--_spacing-section-unit);
   padding-bottom: var(--_spacing-section-unit);
-  // border-inline: 2px solid #ccc;
   min-height: calc(100vh - (var(--navbar-height) + var(--footer-height)));
   width: var(--_page-content-width);
 }
