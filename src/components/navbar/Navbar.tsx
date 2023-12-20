@@ -2,7 +2,7 @@
 
 import { lato } from "@/fonts/fonts";
 import Link from "next/link";
-import { useCallback, useRef } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import SlideUpBtn from "@/assets/tech-icons/slide-up-icon.svg";
@@ -10,35 +10,30 @@ import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
+
+  const [lastScrollTop, setLastScrollTop] = useState<number>(0);
   const slideUpBtnRef = useRef<HTMLButtonElement | null>(null);
+  const navbarRef = useRef<HTMLElement | null>(null);
 
-  const navbarRef = useCallback((node: HTMLElement) => {
-    if (node) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            slideUpBtnRef.current?.classList.toggle(
-              "visible",
-              !entry.isIntersecting
-            );
-          });
-        },
-        {
-          rootMargin: `${window.innerHeight}px`,
-          threshold: 1,
+  useLayoutEffect(() => {
+    const onScroll = () => {
+      const currentScrollTop = Math.ceil(document.documentElement.scrollTop);
+
+      if (navbarRef.current) {
+        const isHidden = navbarRef.current.classList.contains("hide");
+        
+        if (currentScrollTop > lastScrollTop && !isHidden) {
+          navbarRef.current.classList.add("hide");
+        } else if (currentScrollTop < lastScrollTop) {
+          navbarRef.current.classList.remove("hide");
         }
-      );
+        setLastScrollTop(currentScrollTop);
+      }
+    };
 
-      observer.observe(node);
-    }
-  }, []);
-
-  const slideUp = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [lastScrollTop]);
 
   return (
     <nav ref={navbarRef} className="navbar">
@@ -84,22 +79,6 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-
-      <button
-        onClick={() => slideUp()}
-        ref={slideUpBtnRef}
-        className={`slide-up-btn ${lato.className}`}
-      >
-        <span className={`slide-up-text ${lato.className}`}>Slide Up</span>
-
-        <Image
-          src={SlideUpBtn.src}
-          alt="Slide up button"
-          height="100"
-          width="100"
-          className="slice-up-btn-img"
-        />
-      </button>
     </nav>
   );
 };

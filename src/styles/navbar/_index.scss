@@ -1,21 +1,30 @@
 
 @use "../variables" as *;
-@use "slide-up-btn";
 
 .navbar {
     --_nav-spacer: var(--spacer-2);
     --_nav_transition-duration: 400ms;
     --_nav-transition-timming: ease;
     --_nav-gradient-background: linear-gradient(45deg, blue, purple);
+    --_nav-inline-padding: 2rem;
 
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     width: calc(100% - (var(--spacer-5) / 2));
+    background: var(--app-background);
+    padding-inline: var(--_nav-inline-padding);
 
     height: var(--navbar-height);
+    transition: transform 500ms ease-in;
+
+    &.hide {
+        transform: translateY(-100%);
+    }
 
     @media (width >= $mobile-width) {
-        width: min(calc(100% - var(--spacer-5)), var(--app-max-width));
+        width: min(calc(100% - var(--spacer-5)), (var(--app-max-width) + (var(--_nav-inline-padding) * 2)));
         font-size: 1rem;
     }
 
@@ -45,7 +54,7 @@
             &::before {
                 content: "";
                 position: absolute;
-                inset: auto auto 0 0;
+                inset: auto auto .25rem 0;
                 z-index: -1;
                 border-radius: inherit;
                 background: #ccc;
