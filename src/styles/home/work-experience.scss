@@ -1,5 +1,6 @@
 
 @use "../variables" as *;
+@use "work-experience-card";
 
 .work-experience {
   --_card-padding-left: 3.5rem;
@@ -29,106 +30,6 @@
     gap: 5rem;
     padding-left: var(--_card-padding-left);
     width: 35rem;
-
-    .experience-card {
-      position: relative;
-      display: grid;
-      grid-template-columns: 7rem 1fr;
-      grid-template-rows: 7rem 1fr;
-      gap: 1.5rem;
-      min-height: 15rem;
-      width: 100%;
-      background: var(--app-background);
-      border-radius: .5rem;
-      padding: 2rem;
-
-      .company-icon-contaner {
-        height: 100%;
-        width: 100%;
-        background: var(--white-color);
-        border-radius: .5rem;
-
-        .company-icon {
-          height: 100%;
-          width: 100%;
-          border-radius: inherit;
-        }
-      }
-
-      .company-information {
-        display: flex;
-        align-self: center;
-        flex-direction: column;
-        gap: .7rem;
-        margin-block: auto;
-
-        .company-url {
-          position: relative;
-          color: var(--primary-text-color);
-          text-decoration: none;
-          width: fit-content;
-
-          &:hover::before {
-            width: 100%;
-          }
-
-          &::before {
-            content: "";
-            position: absolute;
-            inset: auto 0 -.25rem 0;
-            margin: auto;
-            height: .075rem;
-            width: 0;
-            background: var(--primary-text-color);
-            border-radius: 1rem;
-
-            transition: width 250ms ease;
-          }
-        }
-      }
-
-      .work-description {
-        grid-column: 1 / span 2;
-        display: grid;
-        gap: .7rem;
-
-        .work-description-title {
-          font-size: .9rem;
-          width: 60%;
-          font-weight: bold;
-          margin-left: 5%;
-          word-spacing: .125rem;
-        }
-
-        .work-experience-description {
-          width: 90%;
-          margin-left: 5%;
-        }
-      }
-
-      .experience-list-dot {
-        content: "";
-        position: absolute;
-        isolation: isolate;
-        inset: 0 auto auto calc(var(--_card-padding-left) * -1);
-        height: 1.5rem;
-        width: 1.5rem;
-        border-radius: 50%;
-        background: var(--app-background-gradient);
-        transform: 
-          translateX(-50%) 
-          translateY(-50%);
-
-        &::before {
-          content: "";
-          position: absolute;
-          inset: .125rem;
-          background: var(--app-background);
-          border-radius: inherit;
-        }
-      }
-
-    }
   }
 
   .work-experience-title {
