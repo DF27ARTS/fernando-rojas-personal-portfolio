@@ -12,6 +12,7 @@ import { WorkExperiences } from "@/assets/work-experience/work-experience";
 import WorkExperience from "@/components/home/WorkExperience";
 import ContactForm from "@/components/home/ContactForm";
 
+
 const HomePage = () => {
   return (
     <>
