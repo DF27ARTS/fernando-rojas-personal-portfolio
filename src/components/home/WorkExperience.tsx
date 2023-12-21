@@ -75,9 +75,8 @@ const WorkExperience = ({
           {
             links.map((link, index) => {
               return (
-                <a href={link.url} target="_blank" className="link">
+                <a key={`${link.text}-${index}`} href={link.url} target="_blank" className="link">
                   <Image 
-                    key={`${link.text}-${index}`}
                     height="100"
                     width="100"
                     src={link.icon}
