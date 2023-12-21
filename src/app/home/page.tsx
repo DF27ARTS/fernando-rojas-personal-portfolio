@@ -51,7 +51,9 @@ const HomePage = () => {
                 companyUrlName={experience.companyUrlName}
                 workTitle={experience.workTitle}
                 date={experience.date}
-                description={experience.description}
+                description={experience.description} 
+                technologies={experience.technologies} 
+                links={experience.links}              
               />
             );
           })}

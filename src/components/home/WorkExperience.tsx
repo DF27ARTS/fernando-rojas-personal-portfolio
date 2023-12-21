@@ -11,10 +11,12 @@ const WorkExperience = ({
   workTitle,
   date,
   description,
+  technologies,
+  links,
 }: Readonly<WorkExperienceType>) => {
   return (
     <div className="experience-card">
-      <div className="experience-list-dot"></div>
+      <div className="list-dot"></div>
 
       <div className="company-icon-contaner">
         <Image
@@ -51,6 +53,43 @@ const WorkExperience = ({
         <p className={`work-experience-description ${lato.className}`}>
           {description}
         </p>
+
+        <div className="work-experience-tech-container">
+          {
+            technologies.map((tech, index) => {
+              return (
+                <Image 
+                  key={index}
+                  height="100"
+                  width="100"
+                  src={tech}
+                  alt="Work technology icon"
+                  className="work-teck-icon"
+                />
+              )
+            }) 
+          }
+        </div>
+
+        <div className="work-experience-link-container">
+          {
+            links.map((link, index) => {
+              return (
+                <a href={link.url} target="_blank" className="link">
+                  <Image 
+                    key={`${link.text}-${index}`}
+                    height="100"
+                    width="100"
+                    src={link.icon}
+                    alt={link.text}
+                    className="link-icon"
+                  />
+                  <span className={`link-text ${lato.className}`}>{link.text}</span>
+                </a> 
+              )
+            })
+          }
+        </div>
       </div>
     </div>
   );
