@@ -14,7 +14,7 @@
         justify-content: space-between;
      
         perspective: 1000px;
-        perspective-origin: right;
+        perspective-origin: right center;
         & * { transform-style: preserve-3d }
     }
 
@@ -67,6 +67,7 @@
     &__title {
         --_margin-unit: 2.5rem;
         position: relative;
+        z-index: 1;
 
         @media (width >= $tablet-width) {
             font-size: 5.7rem;
@@ -74,6 +75,21 @@
 
             display: flex;
             flex-direction: column;
+
+            // Low browser support 66% (18-12-2023)
+            // -------------------------------------------
+            view-timeline-name: --title-content-animation;
+            view-timeline-axis: block;
+            animation-timeline: --title-content-animation;
+            animation-range: entry 0% cover 45%;
+            animation-name: title-content-animation;
+            animation-fill-mode: both;
+            // -------------------------------------------
+
+            @keyframes title-content-animation {
+                0% { transform: translateX(20rem); }
+                100% { transform: translateX(0); }
+            }
         }
 
         .word-one {
