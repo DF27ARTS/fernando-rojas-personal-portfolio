@@ -16,48 +16,26 @@
     --_word-background: radial-gradient( 
         circle farthest-corner at 12.3% 19.3%,  hsl(240, 100%, 50%) 0%, hsl(300, 100%, 25%) 100.2% )
     ;
-    --_name-animation-delay: 500ms;
-    --_typing-animation-delay: calc(
-        var(--_name-animation-delay) + var(--_word-delay, 0ms)
-    );
-
-    &.front-end{
-        --_animation-duration: 3000ms;
-        --_animation-steps: 9;
-        --_word-length: 10.8rem;
-           
-        @media (max-width: $tablet-width) {
-            --_word-length: 8.5rem;
-        }
-    }
-
-    &.back-end {
-        --_animation-duration: 2600ms;
-        --_animation-steps: 8;
-        --_word-length: 9.5rem;
-        --_word-delay: 3000ms;
-
-        @media (max-width: $tablet-width) {
-            --_word-length: 7.7rem;
-        }
-    }
 
     &.software-development {
-        --_animation-duration: 1800ms;
-        --_animation-steps: 18;
-        --_word-length: 21.6rem;
-        --_word-delay: 5600ms;
+        --_animation-steps: 21;
+        --_word-length: 25.175rem;
 
         @media (max-width: $tablet-width) {
             --_word-length: 17.25rem;
         }
 
         animation: 
-            last-child-typing 
-            var(--_animation-duration) 
-            var(--_typing-animation-delay)
+            typing-animation
+            var(--_typing-animation-duration) 
+            var(--_typing-animation-delay, 0s)
             steps(var(--_animation-steps)) 
             forwards;
+
+        @keyframes typing-animation {
+            0% { width: 0; }
+            100% { width: var(--_word-length); }
+        }
     }
 
     position: absolute;
@@ -65,12 +43,6 @@
     font-size: 1.6rem;
     width: 0;
     overflow: hidden;
-
-    animation: 
-       typing 
-       var(--_animation-duration) 
-       var(--_typing-animation-delay)
-       steps(var(--_animation-steps));
     
     @media (min-width: $mobile-width) {
         --_text-width: 21.5rem;
@@ -85,7 +57,7 @@
     }
 
     &::before {
-        content: attr(word-text); 
+        content: attr(typing-text); 
         position: absolute;
         left: 0;
         width: max-content;
@@ -107,8 +79,8 @@
 
         animation: 
             typing-pointer 
-            calc(var(--_animation-duration) + 1000ms)
-            var(--_typing-animation-delay)
+            calc(var(--_typing-animation-duration) + (var(--_typing-animation-duration) / 2))
+            var(--_typing-animation-delay, 0s)
             steps(var(--_animation-steps)) 
             forwards;
 
@@ -119,16 +91,5 @@
             95% { transform: scaleY(1);}
             100% { transform: scaleY(0);}
         }
-    }
-
-    @keyframes typing {
-        0% { width: 0; }
-        30%, 70% { width: var(--_word-length); }
-        100% { width: 0; }
-    }
-
-    @keyframes last-child-typing {
-        0% { width: 0; }
-        100% { width: var(--_word-length); }
     }
 }
