@@ -7,8 +7,8 @@ const TechnologyCard = ({ name, image }: Readonly<TechCardTypes>) => {
   return (
     <div className="tech-animation-card">
       <Image
-        width="100"
-        height="100"
+        width="300"
+        height="300"
         src={image}
         alt={name}
         className="tech-icon"

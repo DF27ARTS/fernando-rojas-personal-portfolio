@@ -33,7 +33,9 @@
         }
 
         .profile-title {
-            --_animation-delay: 7400ms;
+            --_typing-animation-delay: 1000ms;
+            --_typing-animation-duration: 2000ms;
+            --_slide-up-animation-duration: 700ms;
 
             height: 100%;
             width: min-content;
@@ -51,8 +53,21 @@
                 gap: 3rem;
             }
 
-            .profile-email { --_profile-contact-delay: 700ms; }
-            .profile-phone { --_profile-contact-delay: 950ms; }
+            .profile-email { 
+                --_slide-up-animation-delay: 
+                calc(
+                    var(--_typing-animation-delay) + 
+                    var(--_typing-animation-duration) + 
+                    (var(--_typing-animation-duration) / 2)); 
+            }
+            .profile-phone { 
+                --_slide-up-animation-delay: 
+                calc(
+                    var(--_typing-animation-delay) + 
+                    var(--_typing-animation-duration) + 
+                    (var(--_typing-animation-duration) / 2) + 
+                    250ms); 
+            }
             .profile-email, .profile-phone {
                 display: grid;
                 position: relative;
@@ -60,9 +75,14 @@
                 color: hsl(0, 0%, 73%);
                 opacity: 0;
 
-                animation: profile-contact 700ms ease-out calc(var(--_animation-delay) + var(--_profile-contact-delay)) forwards;
+                animation: 
+                    slide-up-animation 
+                    var(--_slide-up-animation-duration)
+                    ease-out 
+                    var(--_slide-up-animation-delay)
+                    forwards;
 
-                @keyframes profile-contact {
+                @keyframes slide-up-animation {
                     0% {
                         transform: translateY(3rem);
                         opacity: 0;

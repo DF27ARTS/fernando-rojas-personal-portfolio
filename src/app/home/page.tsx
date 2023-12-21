@@ -1,7 +1,7 @@
 "use client";
 
 import GridCard from "@/components/home/GridCard";
-import Profetion from "@/components/home/Profetion";
+// import TypingText from "@/components/home/Profetion";
 import ProfilePicture from "@/components/home/ProfilePicture";
 
 import { lato } from "@/fonts/fonts";
@@ -11,6 +11,7 @@ import { gridTableCards } from "@/assets/home-grid-table/grid-table";
 import { WorkExperiences } from "@/assets/work-experience/work-experience";
 import WorkExperience from "@/components/home/WorkExperience";
 import ContactForm from "@/components/home/ContactForm";
+import TypingText from "@/components/home/TypingText";
 
 const HomePage = () => {
   return (
@@ -21,10 +22,13 @@ const HomePage = () => {
         </div>
         <div>
           <div className="profile-title">
+
             <h1 className={`profile-name ${lato.className}`}>
               FERNANDO ROJAS
             </h1>
-            <Profetion />
+
+            <TypingText />
+
             <p className={`profile-email ${lato.className}`} >
               diego27fernando72@gmail.com
             </p>
