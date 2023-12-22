@@ -1,7 +1,6 @@
 "use client";
 
 import GridCard from "@/components/home/GridCard";
-// import TypingText from "@/components/home/Profetion";
 import ProfilePicture from "@/components/home/ProfilePicture";
 
 import { lato } from "@/fonts/fonts";
@@ -12,7 +11,6 @@ import { WorkExperiences } from "@/assets/work-experience/work-experience";
 import WorkExperience from "@/components/home/WorkExperience";
 import ContactForm from "@/components/home/ContactForm";
 import TypingText from "@/components/home/TypingText";
-
 
 const HomePage = () => {
   return (
