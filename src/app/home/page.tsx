@@ -12,6 +12,7 @@ import WorkExperience from "@/components/home/WorkExperience";
 import ContactForm from "@/components/home/ContactForm";
 import TypingText from "@/components/home/TypingText";
 
+
 const HomePage = () => {
   return (
     <>

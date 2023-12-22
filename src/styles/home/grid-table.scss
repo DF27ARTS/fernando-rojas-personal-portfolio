@@ -75,21 +75,6 @@
 
             display: flex;
             flex-direction: column;
-
-            // Low browser support 66% (18-12-2023)
-            // -------------------------------------------
-            view-timeline-name: --title-content-animation;
-            view-timeline-axis: block;
-            animation-timeline: --title-content-animation;
-            animation-range: entry 0% cover 45%;
-            animation-name: title-content-animation;
-            animation-fill-mode: both;
-            // -------------------------------------------
-
-            @keyframes title-content-animation {
-                0% { transform: translateX(20rem); }
-                100% { transform: translateX(0); }
-            }
         }
 
         .word-one {
