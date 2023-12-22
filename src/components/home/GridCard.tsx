@@ -1,6 +1,6 @@
 "use client";
 import { GridCardTypes } from "@/assets/home-grid-table/grid-table";
-import { latoItalic } from "@/fonts/fonts";
+import { lato } from "@/fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -30,7 +30,7 @@ const GridCard = ({
                     height="800"
                     width="800"
                   />
-                  <div className={`grid-card-title ${latoItalic.className}`} translate="no">
+                  <div className={`grid-card-title ${lato.className}`} translate="no">
                     {placeHolder}
                   </div>
                 </Link>
