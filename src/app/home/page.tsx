@@ -1,7 +1,6 @@
 "use client";
 
 import GridCard from "@/components/home/GridCard";
-// import TypingText from "@/components/home/Profetion";
 import ProfilePicture from "@/components/home/ProfilePicture";
 
 import { lato } from "@/fonts/fonts";
