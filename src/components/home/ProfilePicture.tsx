@@ -12,6 +12,7 @@ const ProfilePicture = () => {
         alt="Portfolio picture"
         className="picture"
       />
+      hello world
     </div>
   );
 };
