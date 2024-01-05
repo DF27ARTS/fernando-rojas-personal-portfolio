@@ -40,5 +40,5 @@ jobs:
         run: npm ci 
       - name: Run job
         run: npm run ${{ matrix.job }}
-    needs: avoid_reduncy 
+    needs: avoid_redundancy 
       
