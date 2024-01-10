@@ -90,7 +90,7 @@ const HomePage = () => {
 
       <section className="tech-animation-container">
         <h2 className={`tech-container-title ${lato.className}`}>
-          MY <span className="fantacy-text">TECH</span> STACH
+          MY <span className="fantacy-text">TECH</span> STACK
         </h2>
         <div className="tech-cards-container">
           {techInformation.map((tech, index) => {
